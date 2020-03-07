@@ -8861,8 +8861,419 @@ See lecture 120 for the  realtors.styles.scss file
 
 
 
-
-
 // lecture 124: Wrapping up the Nexter Project: Final Considerations
 
 // 
+
+
+
+
+
+// I created a new repository in GitHub called " nexters-react " and after I created the repository
+// I had to connect my GitHub repository to my local machine and I did that by tpying the command
+// in " Rogers-iMac:nexters-react Home$ git init
+//                                      git add README.md
+//                                      git commit -m "first commit"
+//                                      git remote add origin git@github.com:sandstone1/nexters_react.git
+//                                      git push -u origin master "
+// and this command was suggested by GitHub on the quick setup page after I created my nexters-react
+// repo
+
+// code from the terminal:
+
+/*
+Rogers-iMac:nexters-react Home$ heroku --version
+heroku/7.29.0 darwin-x64 node-v11.14.0
+Rogers-iMac:nexters-react Home$ heroku login
+ ›   Warning: heroku update available from 7.29.0 to 7.39.0.
+heroku: Press any key to open up the browser to login or q to exit: 
+Opening browser to https://cli-auth.heroku.com/auth/cli/browser/95c8a278-56e2-464b-9737-d10545568e27
+Logging in... done
+Logged in as rogerhall123@gmail.com
+Rogers-iMac:nexters-react Home$ git init
+Reinitialized existing Git repository in /Applications/MAMP/htdocs/stoneburyhomes/misc/udemy/advanced_css_and_sass/nexters-react/.git/
+Rogers-iMac:nexters-react Home$ git add README.md
+Rogers-iMac:nexters-react Home$ git commit -m "first commit"
+On branch master
+Changes not staged for commit:
+	modified:   package.json
+	modified:   public/index.html
+	deleted:    src/App.css
+	modified:   src/App.js
+	modified:   src/App.test.js
+	modified:   src/index.css
+	modified:   src/index.js
+
+Untracked files:
+	app.js
+	package-lock.json
+	public/.htaccess
+	public/favicon.png
+	src/App.scss
+	src/assets/
+	src/components/
+	src/old-App.css
+	src/old-App.js
+	src/old-App.test.js
+	src/old-index.css
+	src/old-index.js
+	src/pages/
+
+no changes added to commit
+Rogers-iMac:nexters-react Home$ git remote add origin git@github.com:sandstone1/nexters_react.git
+Rogers-iMac:nexters-react Home$ git push -u origin master
+Counting objects: 22, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (22/22), done.
+Writing objects: 100% (22/22), 194.66 KiB | 3.60 MiB/s, done.
+Total 22 (delta 0), reused 0 (delta 0)
+To github.com:sandstone1/nexters_react.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Rogers-iMac:nexters-react Home$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   package.json
+	modified:   public/index.html
+	deleted:    src/App.css
+	modified:   src/App.js
+	modified:   src/App.test.js
+	modified:   src/index.css
+	modified:   src/index.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	app.js
+	package-lock.json
+	public/.htaccess
+	public/favicon.png
+	src/App.scss
+	src/assets/
+	src/components/
+	src/old-App.css
+	src/old-App.js
+	src/old-App.test.js
+	src/old-index.css
+	src/old-index.js
+	src/pages/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Rogers-iMac:nexters-react Home$ git add .
+Rogers-iMac:nexters-react Home$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   app.js
+	new file:   package-lock.json
+	modified:   package.json
+	new file:   public/.htaccess
+	new file:   public/favicon.png
+	modified:   public/index.html
+	modified:   src/App.js
+	new file:   src/App.scss
+	modified:   src/App.test.js
+	new file:   src/assets/back.jpg
+	new file:   src/assets/gal-1.jpeg
+	new file:   src/assets/gal-10.jpeg
+	new file:   src/assets/gal-11.jpeg
+	new file:   src/assets/gal-12.jpeg
+	new file:   src/assets/gal-13.jpeg
+	new file:   src/assets/gal-14.jpeg
+	new file:   src/assets/gal-2.jpeg
+	new file:   src/assets/gal-3.jpeg
+	new file:   src/assets/gal-4.jpeg
+	new file:   src/assets/gal-5.jpeg
+	new file:   src/assets/gal-6.jpeg
+	new file:   src/assets/gal-7.jpeg
+	new file:   src/assets/gal-8.jpeg
+	new file:   src/assets/gal-9.jpeg
+	new file:   src/assets/hero.jpeg
+	new file:   src/assets/house-1.jpeg
+	new file:   src/assets/house-2.jpeg
+	new file:   src/assets/house-3.jpeg
+	new file:   src/assets/house-4.jpeg
+	new file:   src/assets/house-5.jpeg
+	new file:   src/assets/house-6.jpeg
+	new file:   src/assets/logo-bbc.png
+	new file:   src/assets/logo-bi.png
+	new file:   src/assets/logo-forbes.png
+	new file:   src/assets/logo-techcrunch.png
+	new file:   src/assets/logo.png
+	new file:   src/assets/realtor-1.jpeg
+	new file:   src/assets/realtor-2.jpeg
+	new file:   src/assets/realtor-3.jpeg
+	new file:   src/assets/sprite.svg
+	new file:   src/assets/story-1.jpeg
+	new file:   src/assets/story-2.jpeg
+	new file:   src/assets/text.txt
+	new file:   src/components/features/features.component.jsx
+	new file:   src/components/features/features.styles.scss
+	new file:   src/components/footer/footer.component.jsx
+	new file:   src/components/footer/footer.styles.scss
+	new file:   src/components/gallery/gallery.component.jsx
+	new file:   src/components/gallery/gallery.styles.scss
+	new file:   src/components/header/header.component.jsx
+	new file:   src/components/header/header.styles.scss
+	new file:   src/components/homes/homes.component.jsx
+	new file:   src/components/homes/homes.styles.scss
+	new file:   src/components/menu/menu.component.jsx
+	new file:   src/components/menu/menu.styles.scss
+	new file:   src/components/realtors/realtors.component.jsx
+	new file:   src/components/realtors/realtors.styles.scss
+	new file:   src/components/sidebar-nav/sidebar-nav.component.jsx
+	new file:   src/components/sidebar-nav/sidebar-nav.styles.scss
+	new file:   src/components/sidebar/sidebar.component.1.jsx
+	new file:   src/components/sidebar/sidebar.component.jsx
+	new file:   src/components/sidebar/sidebar.styles.scss
+	new file:   src/components/testimonial-content/testimonial-content.component.jsx
+	new file:   src/components/testimonial-content/testimonial-content.styles.scss
+	new file:   src/components/testimonial-pictures/testimonial-pictures.component.jsx
+	new file:   src/components/testimonial-pictures/testimonial-pictures.styles.scss
+	modified:   src/index.css
+	modified:   src/index.js
+	renamed:    src/App.css -> src/old-App.css
+	copied:     src/App.js -> src/old-App.js
+	new file:   src/old-App.test.js
+	new file:   src/old-index.css
+	copied:     src/index.js -> src/old-index.js
+	new file:   src/pages/homepage/homepage.component.jsx
+	new file:   src/pages/homepage/homepage.styles.scss
+
+Rogers-iMac:nexters-react Home$ git init
+Reinitialized existing Git repository in /Applications/MAMP/htdocs/stoneburyhomes/misc/udemy/advanced_css_and_sass/nexters-react/.git/
+Rogers-iMac:nexters-react Home$ git add README.md
+Rogers-iMac:nexters-react Home$ git commit -m "first commit"
+[master 2487b16] first commit
+ 75 files changed, 25648 insertions(+), 100 deletions(-)
+ create mode 100644 app.js
+ create mode 100644 package-lock.json
+ create mode 100644 public/.htaccess
+ create mode 100755 public/favicon.png
+ rewrite public/index.html (97%)
+ rewrite src/App.js (90%)
+ create mode 100644 src/App.scss
+ create mode 100755 src/assets/back.jpg
+ create mode 100755 src/assets/gal-1.jpeg
+ create mode 100755 src/assets/gal-10.jpeg
+ create mode 100755 src/assets/gal-11.jpeg
+ create mode 100755 src/assets/gal-12.jpeg
+ create mode 100755 src/assets/gal-13.jpeg
+ create mode 100755 src/assets/gal-14.jpeg
+ create mode 100755 src/assets/gal-2.jpeg
+ create mode 100755 src/assets/gal-3.jpeg
+ create mode 100755 src/assets/gal-4.jpeg
+ create mode 100755 src/assets/gal-5.jpeg
+ create mode 100755 src/assets/gal-6.jpeg
+ create mode 100755 src/assets/gal-7.jpeg
+ create mode 100755 src/assets/gal-8.jpeg
+ create mode 100755 src/assets/gal-9.jpeg
+ create mode 100755 src/assets/hero.jpeg
+ create mode 100755 src/assets/house-1.jpeg
+ create mode 100755 src/assets/house-2.jpeg
+ create mode 100755 src/assets/house-3.jpeg
+ create mode 100755 src/assets/house-4.jpeg
+ create mode 100755 src/assets/house-5.jpeg
+ create mode 100755 src/assets/house-6.jpeg
+ create mode 100755 src/assets/logo-bbc.png
+ create mode 100755 src/assets/logo-bi.png
+ create mode 100755 src/assets/logo-forbes.png
+ create mode 100755 src/assets/logo-techcrunch.png
+ create mode 100755 src/assets/logo.png
+ create mode 100755 src/assets/realtor-1.jpeg
+ create mode 100755 src/assets/realtor-2.jpeg
+ create mode 100755 src/assets/realtor-3.jpeg
+ create mode 100755 src/assets/sprite.svg
+ create mode 100755 src/assets/story-1.jpeg
+ create mode 100755 src/assets/story-2.jpeg
+ create mode 100755 src/assets/text.txt
+ create mode 100644 src/components/features/features.component.jsx
+ create mode 100644 src/components/features/features.styles.scss
+ create mode 100644 src/components/footer/footer.component.jsx
+ create mode 100644 src/components/footer/footer.styles.scss
+ create mode 100644 src/components/gallery/gallery.component.jsx
+ create mode 100644 src/components/gallery/gallery.styles.scss
+ create mode 100644 src/components/header/header.component.jsx
+ create mode 100644 src/components/header/header.styles.scss
+ create mode 100644 src/components/homes/homes.component.jsx
+ create mode 100644 src/components/homes/homes.styles.scss
+ create mode 100644 src/components/menu/menu.component.jsx
+ create mode 100644 src/components/menu/menu.styles.scss
+ create mode 100644 src/components/realtors/realtors.component.jsx
+ create mode 100644 src/components/realtors/realtors.styles.scss
+ create mode 100644 src/components/sidebar-nav/sidebar-nav.component.jsx
+ create mode 100644 src/components/sidebar-nav/sidebar-nav.styles.scss
+ create mode 100644 src/components/sidebar/sidebar.component.1.jsx
+ create mode 100644 src/components/sidebar/sidebar.component.jsx
+ create mode 100644 src/components/sidebar/sidebar.styles.scss
+ create mode 100644 src/components/testimonial-content/testimonial-content.component.jsx
+ create mode 100644 src/components/testimonial-content/testimonial-content.styles.scss
+ create mode 100644 src/components/testimonial-pictures/testimonial-pictures.component.jsx
+ create mode 100644 src/components/testimonial-pictures/testimonial-pictures.styles.scss
+ rewrite src/index.js (75%)
+ rename src/{App.css => old-App.css} (100%)
+ copy src/{App.js => old-App.js} (100%)
+ create mode 100644 src/old-App.test.js
+ create mode 100644 src/old-index.css
+ copy src/{index.js => old-index.js} (100%)
+ create mode 100644 src/pages/homepage/homepage.component.jsx
+ create mode 100644 src/pages/homepage/homepage.styles.scss
+Rogers-iMac:nexters-react Home$ git remote add origin git@github.com:sandstone1/nexters_react.git
+fatal: remote origin already exists.
+Rogers-iMac:nexters-react Home$ git commit -m " Second Commit "
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+	modified:   src/index.js
+
+no changes added to commit
+Rogers-iMac:nexters-react Home$ git add .
+Rogers-iMac:nexters-react Home$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   src/index.js
+
+Rogers-iMac:nexters-react Home$ git commit -m " Second Commit "
+[master 6050e53]  Second Commit
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Rogers-iMac:nexters-react Home$ git push
+Counting objects: 93, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (91/91), done.
+Writing objects: 100% (93/93), 8.72 MiB | 2.12 MiB/s, done.
+Total 93 (delta 7), reused 0 (delta 0)
+remote: Resolving deltas: 100% (7/7), completed with 1 local object.
+To github.com:sandstone1/nexters_react.git
+   8f1b0da..6050e53  master -> master
+*/
+
+
+// now in order for us to get our application up on heroku, we have to use some commands from
+// heroku CLI which I installed with the Expensify app
+
+// you push commits up onto heroku using git commands but they are heroku specific git
+// commands and then heroku will build our app depending on what script we tell it to run
+// and it will serve our app from a heroku website and to do that we first need to create
+// a heroku project for our app and we can do that from our heroku CLI and the heroku CLI
+// can be found in our terminal or is really just our terminal since we've already downloaded
+// the heroku CLI so to create a new project on heroku we need to write " heroku create " and
+// then the name of the project we want to create or " nexters react " and heroku will take
+// our name and put heroku in front of our name and then we type " buildpack " which is 
+// essentially a specific configuration for the build that we want so that it deploys our
+// react app as a static website and buildpack will be a create react app buildpack and
+// we will get this create react app buildpack from typing
+// " https://github.com/mars/create-react-app-buildpack.git " after " buildpack " and this
+// buildpack will use the production build of our react app for the deployment or when heroku
+// deploys our site and gives us a new url for our react app ( remember we don't have to run
+// npm run build ourselves )
+
+// next we want to push our changes up to the heroku project or up to our react app on heroku
+// and we will do that by typing " git push heroku master " and we say master because we want
+// to push our master branch to heroku
+
+
+// ==============================
+// STEP 1 - CREATE OUR HEROKU PROJECT FOR OUR REACT APP
+// ==============================
+
+// " heroku create nexters-react --buildpack https://github.com/mars/create-react-app-buildpack.git "
+
+
+// after I run the above command:
+/*
+›   Warning: heroku update available from 7.29.0 to 7.39.0.
+Creating ⬢ nexters-react... done
+Setting buildpack to https://github.com/mars/create-react-app-buildpack.git... done
+https://nexters-react.herokuapp.com/ | https://git.heroku.com/nexters-react.git
+Rogers-iMac:nexters-react Home$
+*/
+
+
+
+// ==============================
+// STPE 2 - PUSH OUR CHANGES TO OUR PROJECT ON HEROKU
+// ==============================
+
+// " git push heroku master "
+
+
+// after I run the above command:
+/*
+Rogers-iMac:nexters-react Home$ git push heroku master 
+Counting objects: 115, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (113/113), done.
+Writing objects: 100% (115/115), 8.91 MiB | 4.92 MiB/s, done.
+Total 115 (delta 10), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> React.js (create-react-app) multi app detected
+remote: =====> Downloading Buildpack: https://github.com/heroku/heroku-buildpack-multi.git
+remote: =====> Detected Framework: Multipack
+remote: =====> Downloading Buildpack: https://github.com/heroku/heroku-buildpack-nodejs.git
+remote: =====> Detected Framework: Node.js
+remote: 
+remote: -----> Build failed
+remote:  !     Two different lockfiles found: package-lock.json and yarn.lock
+remote: 
+remote:        Both npm and yarn have created lockfiles for this application,
+remote:        but only one can be used to install dependencies. Installing
+remote:        dependencies using the wrong package manager can result in missing
+remote:        packages or subtle bugs in production.
+remote: 
+remote:        - To use npm to install your application's dependencies please delete
+remote:          the yarn.lock file.
+remote: 
+remote:          $ git rm yarn.lock
+remote: 
+remote:        - To use yarn to install your application's dependences please delete
+remote:          the package-lock.json file.
+remote: 
+remote:          $ git rm package-lock.json
+remote:     
+remote:        https://help.heroku.com/0KU2EM53
+remote: 
+remote:  !     Push rejected, failed to compile React.js (create-react-app) multi app.
+remote: 
+remote:  !     Push failed
+remote: Verifying deploy...
+remote: 
+remote: !	Push rejected to nexters-react.
+remote: 
+To https://git.heroku.com/nexters-react.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/nexters-react.git'
+Rogers-iMac:nexters-react Home$ 
+*/
+
+// so I deleted by yarn.lock file and made another commit to Github and then
+// and then reran the heroku command
+
+
+
+
+/*
+
+
+
+
+
+*/
+
+

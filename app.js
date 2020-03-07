@@ -9270,10 +9270,161 @@ Rogers-iMac:nexters-react Home$
 
 /*
 
+Rogers-iMac:nexters-react Home$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
 
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
 
+	modified:   app.js
+	deleted:    yarn.lock
 
-
+no changes added to commit (use "git add" and/or "git commit -a")
+Rogers-iMac:nexters-react Home$ git add .
+Rogers-iMac:nexters-react Home$ git commit -m " deleted yarn.lock "
+[master 2c9ae84]  deleted yarn.lock
+ 2 files changed, 413 insertions(+), 10492 deletions(-)
+ delete mode 100644 yarn.lock
+Rogers-iMac:nexters-react Home$ git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 4.18 KiB | 1.05 MiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:sandstone1/nexters_react.git
+   6050e53..2c9ae84  master -> master
+Rogers-iMac:nexters-react Home$ git push heroku master
+Counting objects: 118, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (116/116), done.
+Writing objects: 100% (118/118), 8.92 MiB | 5.37 MiB/s, done.
+Total 118 (delta 12), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> React.js (create-react-app) multi app detected
+remote: =====> Downloading Buildpack: https://github.com/heroku/heroku-buildpack-multi.git
+remote: =====> Detected Framework: Multipack
+remote: =====> Downloading Buildpack: https://github.com/heroku/heroku-buildpack-nodejs.git
+remote: =====> Detected Framework: Node.js
+remote:        
+remote: -----> Creating runtime environment
+remote:        
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
+remote:        NODE_VERBOSE=false
+remote:        
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  unspecified
+remote:        engines.npm (package.json):   unspecified (use default)
+remote:        
+remote:        Resolving node version 12.x...
+remote:        Downloading and installing node 12.16.1...
+remote:        Using default npm version: 6.13.4
+remote:        
+remote: -----> Installing dependencies
+remote:        Installing node modules (package.json + package-lock)
+remote:        
+remote:        > node-sass@4.13.1 install /tmp/build_7892c33948a5dd1b702f63c8b3224bd8/node_modules/node-sass
+remote:        > node scripts/install.js
+remote:        
+remote:        Downloading binary from https://github.com/sass/node-sass/releases/download/v4.13.1/linux-x64-72_binding.node
+remote:        Download complete
+remote:        Binary saved to /tmp/build_7892c33948a5dd1b702f63c8b3224bd8/node_modules/node-sass/vendor/linux-x64-72/binding.node
+remote:        Caching binary to /tmp/npmcache.vr5AS/node-sass/4.13.1/linux-x64-72_binding.node
+remote:        
+remote:        > core-js@2.6.11 postinstall /tmp/build_7892c33948a5dd1b702f63c8b3224bd8/node_modules/babel-runtime/node_modules/core-js
+remote:        > node -e "try{require('./postinstall')}catch(e){}"
+remote:        
+remote:        
+remote:        > core-js@3.6.4 postinstall /tmp/build_7892c33948a5dd1b702f63c8b3224bd8/node_modules/core-js
+remote:        > node -e "try{require('./postinstall')}catch(e){}"
+remote:        
+remote:        
+remote:        > node-sass@4.13.1 postinstall /tmp/build_7892c33948a5dd1b702f63c8b3224bd8/node_modules/node-sass
+remote:        > node scripts/build.js
+remote:        
+remote:        Binary found at /tmp/build_7892c33948a5dd1b702f63c8b3224bd8/node_modules/node-sass/vendor/linux-x64-72/binding.node
+remote:        Testing binary
+remote:        Binary is fine
+remote:        added 1600 packages from 801 contributors and audited 919053 packages in 40.044s
+remote:        
+remote:        49 packages are looking for funding
+remote:          run `npm fund` for details
+remote:        
+remote:        found 18 moderate severity vulnerabilities
+remote:          run `npm audit fix` to fix them, or `npm audit` for details
+remote:        
+remote: -----> Build
+remote:        Running build
+remote:        
+remote:        > nexters-react@1.0.0 build /tmp/build_7892c33948a5dd1b702f63c8b3224bd8
+remote:        > react-scripts build
+remote:        
+remote:        Creating an optimized production build...
+remote:        Compiled successfully.
+remote:        
+remote:        File sizes after gzip:
+remote:        
+remote:          48.19 KB  build/static/js/2.920f0ee5.chunk.js
+remote:          13.33 KB  build/static/js/main.b144ee9d.chunk.js
+remote:          2.87 KB   build/static/css/main.63f2dc05.chunk.css
+remote:          782 B     build/static/js/runtime-main.712a8565.js
+remote:        
+remote:        The project was built assuming it is hosted at /nexters_react/.
+remote:        You can control this with the homepage field in your package.json.
+remote:        
+remote:        The build folder is ready to be deployed.
+remote:        
+remote:        Find out more about deployment here:
+remote:        
+remote:          bit.ly/CRA-deploy
+remote:        
+remote:        
+remote: -----> Caching build
+remote:        - node_modules
+remote:        
+remote: -----> Pruning devDependencies
+remote:        audited 919053 packages in 12.208s
+remote:        
+remote:        49 packages are looking for funding
+remote:          run `npm fund` for details
+remote:        
+remote:        found 18 moderate severity vulnerabilities
+remote:          run `npm audit fix` to fix them, or `npm audit` for details
+remote:        
+remote: -----> Build succeeded!
+remote: =====> Downloading Buildpack: https://github.com/mars/create-react-app-inner-buildpack.git
+remote: =====> Detected Framework: React.js (create-react-app)
+remote:        Writing `static.json` to support create-react-app
+remote:        Enabling runtime environment variables
+remote: =====> Downloading Buildpack: https://github.com/heroku/heroku-buildpack-static.git
+remote: =====> Detected Framework: Static HTML
+remote:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+remote:                                  Dload  Upload   Total   Spent    Left  Speed
+remote: 100  838k  100  838k    0     0  12.5M      0 --:--:-- --:--:-- --:--:-- 12.5M
+remote: -----> Installed directory to /app/bin
+remote: Using release configuration from last framework (Static HTML).
+remote: -----> Discovering process types
+remote:        Procfile declares types     -> (none)
+remote:        Default types for buildpack -> web
+remote: 
+remote: -----> Compressing...
+remote:        Done: 73.7M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://nexters-react.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/nexters-react.git
+ * [new branch]      master -> master
+Rogers-iMac:nexters-react Home$ 
 */
+
+
 
 

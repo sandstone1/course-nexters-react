@@ -1,0 +1,119 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.container {
+    display               : grid;
+    grid-template-rows    : 80vh                       // row 1 - 2    ( row 1 )
+                            min-content                // row 2 - 3    ( row 2 )
+                            40vw                       // row 3 - 4    ( row 3 )
+                            repeat( 3, min-content );  // row 4 - 7    ( row 4, 5, 6 )
+
+    grid-template-columns : 8rem                                        // col 1 - 2   ( column 1 )
+                            minmax( 6rem, 1fr )                         // col 2 - 3   ( column 2 )
+                            repeat( 8, minmax( min-content, 14rem ) )   // col 3 - 11  ( column 3 - 10 )
+                            minmax( 6rem, 1fr );                        // col 11 - 12 ( column 11 )
+
+    // on the next day, I added " grid-template-areas " myself to make the layout easier to
+    // understand and debug later if needed
+
+    // now let's place all the grid items inside our layout by setting the " grid-area " property
+    // for each grid item
+
+    // now we are ready to build all these sections one by one
+    
+    grid-template-areas   :
+    // col 1   col 2   col 3    col 4    col 5    col 6    col 7    col 8    col 9    col 10   col 11
+    "  sidebar header  header   header   header   header   header   header   realtors realtors realtors  "  // row 1
+    "  sidebar .       features features features features features features features features .         "  // row 2
+    "  sidebar TP      TP       TP       TP       TP       TC       TC       TC       TC       TC        "  // row 3
+    "  sidebar .       homes    homes    homes    homes    homes    homes    homes    homes    .         "  // row 4
+    "  sidebar gallery gallery  gallery  gallery  gallery  gallery  gallery  gallery  gallery  gallery   "  // row 5
+    "  sidebar footer  footer   footer   footer   footer   footer   footer   footer   footer   footer    "; // row 6
+
+    // remember, . = full bleed, TP = testimonial pictures, TC = testimonial content
+}
+
+
+// responsive change #8
+// let's move the sidebar to the top of the container and to do that we have to change out grid
+// definition and this is where CSS Grid really shines so with a single media query we can
+// completely change our entire layout simply by changing our grid definitions
+
+@media only screen and ( max-width : $bp-large ) {
+
+    // to move the sidebar to the top we want to add a row and remove a column
+    
+    .container {
+
+        grid-template-rows    : 6rem                       // row 1 - 2    ( row 1 )
+                                80vh                       // row 2 - 3    ( row 2 )
+                                min-content                // row 3 - 4    ( row 3 )
+                                40vw                       // row 4 - 5    ( row 4 )
+                                repeat( 3, min-content );  // row 5 - 8    ( row 5, 6, 7 )
+
+        grid-template-columns : minmax( 6rem, 1fr )                         // col 1 - 2   ( column 1 )
+                                repeat( 8, minmax( min-content, 14rem ) )   // col 2 - 10  ( column 2 - 9 )
+                                minmax( 6rem, 1fr );                        // col 10 - 11 ( column 10 )
+
+        grid-template-areas   :
+        // col 1   col 2    col 3    col 4    col 5    col 6    col 7    col 8    col 9   col 10
+        "  sidebar sidebar  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar   "  // row 1
+        "  header  header   header   header   header   header   header   realtors realtors realtors  "  // row 2
+        "  .       features features features features features features features features .         "  // row 3
+        "  TP      TP       TP       TP       TP       TC       TC       TC       TC       TC        "  // row 4
+        "  .       homes    homes    homes    homes    homes    homes    homes    homes    .         "  // row 5
+        "  gallery gallery  gallery  gallery  gallery  gallery  gallery  gallery  gallery  gallery   "  // row 6
+        "  footer  footer   footer   footer   footer   footer   footer   footer   footer   footer    "; // row 7
+
+    }
+
+}
+
+
+
+
+// responsive change #15
+// when we get to 800px, let's place the realtors section below the header section and place
+// the TP section below the TC section
+
+// let's also increase the row height for the header to calc( 100vh - 6rem ) so that the sidebar
+// and header fill the entire viewport when the viewport is 800px and below; however, during testing
+// I noticed this did now work correctly given the mobile phone's address bar and the bar at the
+// bottom of the screen so I changed " calc( 100vh - 6rem ) " to " calc( 88vh - 6rem ) " and it
+// worked better accross iPhone and Samsung devices but it was not a perfect solution
+
+// let's also change the row height for rows 5 & 6 to min-content and this not only looks better
+// but is more responsive than 40vw for rows 5 & 6
+
+@media only screen and ( max-width : $bp-medium ) {
+
+    .container {
+
+        grid-template-rows    : 6rem                       // row 1 - 2    ( row 1 )
+                                calc( 88vh - 6rem )        // row 2 - 3    ( row 2 )
+                                min-content                // row 3 - 4    ( row 3 ) 
+                                min-content                // row 4 - 5    ( row 4 )
+                                min-content                // row 5 - 6    ( row 5 )
+                                min-content                // row 6 - 7    ( row 6)
+                                repeat( 3, min-content );  // row 7 - 10    ( row 7, 8, 9 )
+
+        grid-template-columns : minmax( 6rem, 1fr )                         // col 1 - 2   ( column 1 )
+                                repeat( 8, minmax( min-content, 14rem ) )   // col 2 - 10  ( column 2 - 9 )
+                                minmax( 6rem, 1fr );                        // col 10 - 11 ( column 10 )
+
+        grid-template-areas   :
+        // col 1   col 2    col 3    col 4    col 5    col 6    col 7    col 8    col 9   col 10
+        "  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar  sidebar   "  // row 1
+        "  header   header   header   header   header   header   header   header   header   header    "  // row 2
+        "  realtors realtors realtors realtors realtors realtors realtors realtors realtors realtors  "  // row 3 
+        "  .        features features features features features features features features .         "  // row 4
+        "  TC       TC       TC       TC       TC       TC       TC       TC       TC       TC        "  // row 5
+        "  TP       TP       TP       TP       TP       TP       TP       TP       TP       TP        "  // row 6
+        "  .        homes    homes    homes    homes    homes    homes    homes    homes    .         "  // row 7
+        "  gallery  gallery  gallery  gallery  gallery  gallery  gallery  gallery  gallery  gallery   "  // row 8
+        "  footer   footer   footer   footer   footer   footer   footer   footer   footer   footer    "; // row 9
+
+    }
+
+}

@@ -1,0 +1,181 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.header {
+    grid-area : header;
+
+    display               : grid;
+
+    // now we need to add some vertical spacing here and remember that this row has a height
+    // of 80vh and we want the first row to have a height of 1fr, the second row to have a
+    // height of min-content, the third row to have a height of 6rem, the fourth row to have
+    // a height of 1fr
+
+    // responsive change #1
+    // in order to prevent the main heading ( i.e. The ultimate personal freedom ) from
+    // overflowing into the next row, we had to change grid-template-rows from
+    // " grid-template-rows : 1fr min-content 6rem 1fr; " to
+    // " grid-template-rows    : 1fr min-content minmax( 6rem, min-content ) 1fr; " and
+    // this fixed our overflow issue
+
+    grid-template-rows    : 1fr min-content minmax( 6rem, min-content ) 1fr;
+
+    // we want the column to have the same width as the h1 text so we do
+    // " grid-template-columns : max-content; " and now we just need to center the column
+    // track by using justify-content or " justify-content : center; "
+
+    // responsive change #2
+    // to make the header responsive, change " grid-template-columns : max-content; " to
+    // " grid-template-columns : minmax( min-content, max-content; ); "
+
+    grid-template-columns : minmax( min-content, max-content );
+    justify-content       : center;
+    grid-row-gap          : 1.5rem;
+    padding               : 4rem 8rem 8rem 8rem;
+
+    // create an overlay by doind the following:
+
+    background-image      : linear-gradient( to right, rgba( $color-secondary, 0.93 ), rgba( $color-secondary, 0.93 ) ), url( ../../assets/hero.jpeg ); // rgba( 198, 153, 99, 1 )
+    background-position   : center; 
+    background-size       : cover;
+    background-blend-mode : multiply;
+
+    .heading-3 {
+        font-family    : $font-display-2;
+        font-size      : 1.6rem; 
+        font-weight    : 400;
+        color          : $color-primary;
+        text-transform : uppercase; 
+    }
+
+    .heading-1 {
+        font-family : $font-display-2;
+        font-size   : 4.5rem;
+        font-weight : 400;
+        color       : $color-grey-light-1;
+        line-height : 1;
+    }
+
+    &--logo {
+
+        // center the logo in the container horizontally
+
+        justify-self : center;
+
+        height : 3rem;
+    }
+
+    &--seenon-text {
+
+        // remember even text can be a grid item and pseudo elements can also be grid items
+
+        // below we will have 3 grid items: the text, the ::before pseudo element and the
+        // ::after pseudo element
+
+        display               : grid;
+        grid-template-rows    : auto;
+
+        // we want to give the text a max-content value and then let the first line and the
+        // last line take up the remaining space inside the container
+
+        grid-template-columns : 1fr max-content 1fr;
+        align-items           : center;
+        grid-column-gap       : 1.5rem; 
+
+        font-size  : 1.6rem;
+        color      : $color-grey-light-2;
+        text-align : center; 
+        
+        &::before,
+        &::after {
+
+            display : block;
+            height  : 0.1rem;
+
+            background-color : $color-grey-light-2;
+            
+            // remember, we need to define the content property in order for the above pseudo
+            // elements to work
+
+            content : '';
+
+        }
+
+
+    }
+
+    &--seenon-logos {
+
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : repeat( 4, 1fr );
+
+        // responsive change #3
+        // as the viewport got smaller, we had to add " align-items : center; " in order to
+        // center all the grid items
+
+        align-items           : center; 
+
+        // use " justify-items : center; " to center each item inside its grid cell
+
+        justify-items         : center;
+        grid-column-gap       : 3rem; 
+
+        > img {
+
+            // make sure the 4 social proof images have the same height
+            
+            // responsive change #4
+            // we need set max-height and max-width in order to make the images responsive
+
+            max-width  : 100%;
+            max-height : 2.5rem;
+
+            // we want the images to be more subtle and not be so bright so we use
+            // " filter : brightness( 70% ); "
+
+            filter : brightness( 70% );
+
+        }
+    }
+
+    &--btn {
+
+        // in order to prevent our button from stretching to fit the height of the row
+        // we need to use the properties align-self and justify-self or " align-self : start; "
+        // and " justify-self : start; "
+
+        align-self   : start;
+        justify-self : start; 
+
+        // we want the button to start as the beginning of the container so let's apply
+        // " just "
+        
+        @include button;
+
+    }
+
+}
+
+
+// responsive change #5
+// Jonus philosophy on media queries is to resize the screen and see where the design breaks
+// and these desgin breaks will approximate the breakpoints we use in our media queries so let's
+// first define our breakpoint in our App.scss file
+
+
+
+// responsive change #20
+
+@media only screen and ( max-width : $bp-small ) {
+
+    .header {
+
+        padding : 5rem;
+
+    }
+
+    
+
+}

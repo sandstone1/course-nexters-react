@@ -1,0 +1,332 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.gallery {
+    grid-area : gallery;
+
+    display               : grid;
+
+    // as we reduce the viewport the images maintain their aspect ratio and the reason
+    // for this is due to the " 5vw " value below and Jonus experimented and came up with
+    // 5vw
+
+    // remember that images have an intrinsic aspect ratio and because of that they don't
+    // really fill the grid cells that they are assigned to and this will create a big
+    // issue for our image gallery since the different images have different aspect rations
+    // and this will create a very messy looking gallery so how can we fix this? and to fix
+    // this we will use the " object-fit " property and we will set object-fit to cover and
+    // then add a parent container for each element or image and then add object-fit to the
+    // image element in order to make the image fill the entire container and now let's
+    // go to the gallery.component.jsx file to add the container element for each image
+
+    // I changed " grid-template-rows : repeat( 7, 5vw ); " to
+    // " grid-template-rows : repeat( 7, auto ); " since " auto " made each image taller and
+    // therefore I was able to show the original image in the gallery whereas " 5vw " chopped
+    // the images
+
+    grid-template-rows    : repeat( 7, auto );
+    grid-template-columns : repeat( 8, 1fr );
+    grid-gap              : 1.5rem;
+
+    // we also want some spacing between the gallery and the edges of the container and we can
+    // do that by adding some padding
+
+    padding              : 1.5rem;
+
+
+    background-color : $color-grey-light-1;
+    
+    // remember, now the figure element is the grid item and not the image element
+
+    &--item {
+
+        &--1 {
+            grid-row    : 1 / span 2;
+            grid-column : 1 / span 2;
+        }
+
+        // in the next video, we will place the remaining images inside the appropriate grid
+        // row and column tracks
+
+        &--2 {
+            grid-row    : 1 / span 3;
+            grid-column : 3 / span 3;
+        }
+
+        &--3 {
+            grid-row    : 1 / span 2;
+            grid-column : 6 / 7;
+        }
+
+        &--4 {
+            grid-row    : 1 / span 2;
+            grid-column : 7 / span 2;
+        }
+
+        &--5 {
+            grid-row    : 3 / span 3;
+            grid-column : 1 / span 2;
+        }
+
+        &--6 {
+            grid-row    : 4 / span 2;
+            grid-column : 3 / span 2;
+        }
+
+        &--7 {
+            grid-row    : 4 / 5;
+            grid-column : 5 / 6;
+        }
+
+        &--8 {
+            grid-row    : 3 / span 2;
+            grid-column : 6 / span 2;
+        }
+
+        &--9 {
+            grid-row    : 3 / span 3;
+            grid-column : 8 / 9;
+        }
+
+        &--10 {
+            grid-row    : 6 / span 2;
+            grid-column : 1 / 2;
+        }
+
+        &--11 {
+            grid-row    : 6 / span 2;
+            grid-column : 2 / span 2;
+        }
+
+        &--12 {
+            grid-row    : 6 / span 2;
+            grid-column : 4 / 5;
+        }
+
+        &--13 {
+            grid-row    : 5 / span 3;
+            grid-column : 5 / span 3;
+        }
+
+        &--14 {
+            grid-row    : 6 / span 2;
+            grid-column : 8 / 9;
+        }
+
+    }
+
+    &--img {
+
+        // set the image to " display ; block; " in order to remove any white space that may
+        // appear after the image
+        
+        display : block;
+
+        // in order to get each image to fit within one column we have to do " width : 100%; "
+
+        width   : 100%;
+        height  : 100%; 
+
+        // now let add the object-fit property and remember for object-fit to work we have to add
+        // the width and the height to the element
+
+        // remember, in order to keep the image aspect ratio we have to use " object-fit : cover; "
+        // and if we remove " object-fit : cover; " then the aspect ratio for each image will be
+        // screwed up and will result in some weird stretching of the images
+
+        // by using these 3 key value pairs inside the image element or " width : 100%; "
+        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+        // one grid cell and one grid cell only
+
+        object-fit : cover;
+
+        // now let's place our items in the appropriate grid row and column tracks by using the
+        // grid-row and grid-column properties above in &--item {} 
+
+    }
+    
+}
+
+
+// just testing but think this looks better than with no media queries
+
+@media only screen and ( max-width : $bp-largest ) {
+
+	.gallery {
+
+        grid-template-rows    : repeat( 13, auto );
+        grid-template-columns : repeat( 4, 1fr );
+
+        &--item {
+
+            &--1 {
+                grid-row    : 1 / span 2;
+                grid-column : 1 / span 2;
+            }
+    
+            &--2 {
+                grid-row    : 1 / span 4;
+                grid-column : 3 / 4;
+                z-index     : 1;
+            }
+    
+            &--3 {
+                grid-row    : 1 / span 4;
+                grid-column : 4 / 5;
+                z-index     : 1;
+            }
+    
+
+            &--4 {
+                grid-row    : 3 / span 2;
+                grid-column : 1 / span 2;
+            }
+    
+            &--5 {
+                grid-row    : 5 / span 3;
+                grid-column : 1 / span 3;
+            }
+    
+            &--6 {
+                grid-row    : 3 / span 2;
+                grid-column : 4 / 5;
+            }
+    
+            &--7 {
+                grid-row    : 4 / 5;
+                grid-column : 3 / 4;
+            }
+    
+            &--8 {
+                grid-row    : 5 / span 4;
+                grid-column : 4 / 5;
+            }
+    
+            &--9 {
+                grid-row    : 8 / span 3;
+                grid-column : 1 / 2;
+            }
+    
+            &--10 {
+                grid-row    : 8 / span 4;
+                grid-column : 1 / span 3;
+                z-index     : 1;
+            }
+    
+            &--11 {
+                grid-row    : 11 / 12;
+                grid-column : 1 / 2;
+            }
+    
+            &--12 {
+                grid-row    : 12 / span 2;
+                grid-column : 1 / span 2;
+            }
+    
+            &--13 {
+                grid-row    : 12 / span 2;
+                grid-column : 3 / 4;
+            }
+    
+            &--14 {
+                grid-row    : 9 / span 5;
+                grid-column : 4 / 5;
+            }
+            
+        }
+
+    }
+
+}
+
+
+// just testing but think this looks better than with no media queries
+
+@media only screen and ( max-width : $bp-medium ) {
+
+	.gallery {
+
+        grid-template-rows    : repeat( 17, auto );
+        grid-template-columns : repeat( 2, 1fr );
+
+        &--item {
+
+            &--1 {
+                grid-row    : 1 / 2;
+                grid-column : 1 / 2;
+            }
+    
+            &--2 {
+                grid-row    : 1 / span 3;
+                grid-column : 2 / 3;
+            }
+    
+            &--3 {
+                grid-row    : 2 / span 2;
+                grid-column : 1 / 2;
+            }
+    
+
+            &--4 {
+                grid-row    : 4 / 5;
+                grid-column : 1 / span 2;
+            }
+    
+            &--5 {
+                grid-row    : 5 / span 3;
+                grid-column : 1 / span 2;
+            }
+    
+            &--6 {
+                grid-row    : 8 / 9;
+                grid-column : 1 / 2;
+            }
+    
+            &--7 {
+                grid-row    : 9 / 10;
+                grid-column : 1 / 2;
+            }
+    
+            &--8 {
+                grid-row    : 8 / span 5;
+                grid-column : 2 / 3;
+                z-index     : 1;
+            }
+    
+            &--9 {
+                grid-row    : 8 / span 3;
+                grid-column : 1 / 2;
+                z-index     : 1;
+            }
+    
+            &--10 {
+                grid-row    : 11 / span 2;
+                grid-column : 1 / 2;
+            }
+    
+            &--11 {
+                grid-row    : 11 / 12;
+                grid-column : 2 / 3;
+            }
+    
+            &--12 {
+                grid-row    : 12 / 13;
+                grid-column : 2 / 3;
+            }
+    
+            &--13 {
+                grid-row    : 13 / span 3;
+                grid-column : 1 / span 2;
+            }
+    
+            &--14 {
+                grid-row    : 16 / span 2;
+                grid-column : 1 / span 2;
+            }
+            
+        }
+
+    }
+
+}

@@ -1,0 +1,121 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.testimonial-pictures {
+    grid-area : TP;
+    display   : grid;
+
+    // before we position these images they are both taking up the entire container and
+    // are stacking with img-1 first and img-2 below img-1
+
+    // Jonus recommends that we do a 6 by 6 grid with the first image taking up 4 rows and
+    // 4 columns and leaving one column on the left of the first image and one column on the
+    // right of the first image and one row above the first image and one row below the first
+    // image
+
+    grid-template-rows    : repeat( 6, 1fr );
+    grid-template-columns : repeat( 6, 1fr );
+    align-items           : center;
+
+
+    // let's add an overlay to this background image to make it fit in better with the look
+    // and feel of our site and we will do this by using the linear gradient function or
+    // " linear-gradient( to right, rgba( $color-primary, 0.5 ), rgba( $color-primary, 0.5 ) ),
+    // url( ../../assets/back.jpg ); // rgb(0,20,61) " and our linear gradient image will lie
+    // on top of our background image, serving as an " overlays " to our background image
+
+    // remember we could combine both images by using the background blend mode property or
+    // " background-blend-mode : multiply; " to give it a really nice visual effect
+
+    background-image : linear-gradient( to right, rgba( $color-primary, 0.5 ), rgba( $color-primary, 0.5 ) ), url( ../../assets/back.jpg ); // rgba( 198, 153, 99, 1 )
+    background-size  : cover;
+
+    &--img-1 {
+
+        // now let's position the image inside the grid container and when we look at the image
+        // on the webpage we see that there is some remaining space at the bottom and that is
+        // because the image doesn't really fit the grid area and the reason this happens is
+        // because the image tries to keep its aspect ratio and in so doing the iamge may not always
+        // fill up the entire grid area; however, we can center this image inside the grid area
+        // by using the align-items property or " align-items : center; " and remember we use
+        // the align-items property inside the container element and not inside the grid item
+
+        grid-row    : 2 / 6;
+        grid-column : 2 / 6;
+        
+
+        // always use percentages when declaring the width for images so that the images can
+        // be flexible
+       
+        width : 100%;
+
+        box-shadow : 0 2rem 5rem rgba( 0, 0, 0, 0.1 );
+
+    }
+
+    &--img-2 {
+
+        // always use percentages when declaring the width for images so that the images can
+        // be flexible
+
+        // now for the second image we want it to expand from the center of the grid to the end
+        // of the grid on the right side
+
+        // in the final version, this image overlaps the right container by just a little bit
+        // and the way we accomplish this is by increasing the width by 15% or " width : 115%; "
+        // and changing the z-index to 1 or " z-index : 1; " so that this image lays on top of
+        // the right container since the right container has a z-index of 0
+
+        // now let's add a shadow to both images and the CSS syntax for box-shadow is
+        // " box-shadow: h-offset / v-offset / blur radius / spread radius / color " and only
+        // the horizontal and vertical offsets are required
+
+        // now let's add in the background image to the container
+
+        grid-row    : 4 / 6;
+        grid-column : 4 / 7;
+        z-index     : 1;
+        width       : 115%;
+
+        box-shadow : 0 2rem 5rem rgba( 0, 0, 0, 0.2 );
+
+    }
+}
+
+
+
+// responsive change #19
+
+// the grid-row values below are not very intuitive but through trail and error they
+// work the best and just remember that when we declare a width of 100% or " width : 100%; "
+// ( and no height ) the image will maintain its aspect ratio so the image may not occopy
+// the defined rows but that's Ok, just experiment so that you can get the right look and
+// feel for the images on the page 
+
+@media only screen and ( max-width : $bp-medium ) {
+
+    .testimonial-pictures {
+
+        padding : 6rem;
+
+        &--img-1 {
+
+            grid-row    : 1 / -1;
+            grid-column : 1 / 5;
+    
+        }
+    
+        &--img-2 {
+    
+            grid-row    : 1 / -1;
+            width       : 100%;
+    
+        }
+
+    }
+
+}
+
+
+

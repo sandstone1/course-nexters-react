@@ -1,0 +1,106 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.footer {
+
+    grid-area : footer;
+
+    padding : 8rem;
+
+    background-color : $color-secondary;
+
+    .nav {
+
+        // now we can use flexbox or grid to place the nav items but Jonus thinks it's
+        // easier to use grid when we want some space between the elements and the way
+        // we make this work with grid is to define the number of columns
+
+        // to make the footer responsive, Jonus suggest we do
+        // " grid-template-columns : repeat( auto-fit, minmax( 15rem, 1fr ) ); " but I
+        // did not like the way the items flowed into new rows as the viewport width
+        // decreased so I think using media queries to make the footer responsive is the
+        // best way to go and gives us a more professional look and feel than Jonus' solution
+
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : repeat( 6, 1fr );
+        grid-gap              : 2rem;
+
+        list-style : none;
+
+        // From the web: "The :link CSS pseudo-class represents an element that has not yet
+        // been visited."
+
+        &--link:link,
+        &--link:visited {
+            display : block;
+            padding : 1.5rem;
+
+            font-family     : $font-display-2; 
+            font-size       : 1.4rem;
+            color           : rgba( 255, 255, 255, 1 );
+            text-align      : center;
+            text-decoration : none;
+            text-transform  : uppercase;
+
+            transition : all 0.2s ease-out;
+        }
+
+        &--link:hover,
+        &--link:active {
+            background-color : rgba( 255, 255, 255, 0.05 );
+
+            // move the background color up just a little to add a nice hoover effect
+            transform: translate3d( 0, -3px, 0); 
+
+        }
+
+    }
+
+    .copyright {
+        margin : 6rem 0 0 0;
+
+        font-size  : 1.4rem;
+        color      : $color-grey-light-2;
+        text-align : center; 
+    }
+
+}
+
+
+// just testing but think this looks better than with no media queries
+
+@media only screen and ( max-width : $bp-largest ) {
+
+	.footer .nav {
+        grid-template-rows    : auto;
+        grid-template-columns : repeat( 3, 1fr );
+    }
+
+}
+
+
+// just testing but think this looks better than with no media queries
+
+@media only screen and ( max-width : $bp-large ) {
+
+	.footer .nav {
+        grid-template-rows    : auto;
+        grid-template-columns : repeat( 2, 1fr );
+    }
+
+}
+
+
+
+// just testing but think this looks better than with no media queries
+
+@media only screen and ( max-width : $bp-medium ) {
+
+	.footer .nav {
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+    }
+
+}

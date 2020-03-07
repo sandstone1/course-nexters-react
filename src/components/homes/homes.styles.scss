@@ -1,0 +1,148 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.homes {
+    grid-area : homes;
+
+    // we want to create a 2 by 3 grid and our 6 cards will fit inside this grid and
+    // the 6 home cards will be our grid items
+
+    display               : grid;
+    grid-template-rows    : repeat( 2, 1fr );
+
+    // again use the auto-fit property and the minmax() function to create a responsive design
+
+    grid-template-columns : repeat( auto-fit, minmax( 25rem, 1fr ) );
+    grid-gap              : 7rem;
+    margin                : 15rem 0;
+
+
+    .home {
+
+        display               : grid;
+
+        // Jonus just defined grid-template-columns and said not to define grid-template-rows
+        // and that the row will be automatically generated and Jonus said most of the time
+        // we are just defining the columns and I defined 4 rows as " auto " and it looked pretty
+        // good and auto is the default
+
+        grid-template-rows    : auto auto auto auto;
+        grid-template-columns : repeat( 2, 1fr );
+        grid-row-gap          : 3.5rem;
+
+        // for the heart, we could use " position : relative; " and then absolutely position
+        // the heart on top of the image but Jonus used grid overlapping to get this done
+        // so I will do the same thing
+
+        // position              : relative;
+
+        background-color : $color-grey-light-1;
+    
+    
+        &--img {
+            grid-row    : 1 / 2;
+            grid-column : 1 / -1; 
+
+            width : 100%;
+        }
+
+        &--like {
+            grid-row     : 1 / 2;
+            grid-column  : 2 / 3;
+
+            // again, we are using justify-self to get the element in the right position
+
+            justify-self : end;
+            width        : 2.5rem;
+            height       : 2.5rem;
+            margin       : 1rem;
+
+            /*
+            position : absolute;
+            top      : 1rem;
+            right    : 1rem;
+            */
+
+            fill : $color-primary;
+        }       
+
+        &--name {
+            grid-row     : 1 / 2;
+            grid-column  : 1 / -1;
+
+            // to place the name at the bottom of the grid row, we use align-self or
+            // "align-self : end;" and remember align-self and justify-self are very important
+            // properties to keep in mind as we use CSS Grid
+
+            align-self  : end;
+
+            // to center the name horizontally, we use justify-self or " justify-self : center "
+
+            justify-self : center;
+
+            // give name a z-index of 3 just to make sure it sits on top of the image
+
+            z-index      : 3;
+            width        : 80%;
+            padding      : 1.25rem;
+
+            font-family : $font-display-2;
+            font-size   : 1.6rem;
+            font-weight : 400; 
+            color       : rgba( 255, 255, 255, 1 );
+            text-align  : center;
+
+            background-color : $color-secondary;
+
+            // now move the name down by using the transform property or
+            // " transform : translate3d( 0, 50%, 0 ): " and 50% corresponds to 50% of the height
+            // of the element, which will center the elemnent when it moves down
+
+            transform : translate3d( 0, 50%, 0 );
+        }
+
+        &--location,
+        &--rooms,
+        &--area,
+        &--price {
+
+            // now to put the icon svg and text side by side, Jonus reccomends we use flexbox here
+            // and I agree with his assessment and it's the easiest solution and all we have to do
+            // to make this happen is write " display : flex; "
+
+            display : flex;
+            margin  : 0 0 0 2.0rem;            
+
+            > svg {
+                width  : 2.0rem;
+                height : 2.0rem;
+        
+                // let's change the color of the svg icon and we do that by using the " fill " property
+                fill : $color-primary;
+            }
+
+            > p {
+                margin : 0 0 0 1rem;
+
+                font-family : $font-primary-2;
+                font-size   : 1.5rem;
+            }
+
+        }
+
+        &--location,
+        &--rooms  {
+            margin-top : 2.5rem;             
+        }
+
+        &--btn {
+            grid-row    : 4 / 5;
+            grid-column : 1 / -1;
+
+            @include button();
+        }
+    
+    }
+
+}

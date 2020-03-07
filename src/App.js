@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+
+import { Route, Switch } from 'react-router-dom';
+
+import HomePage from './pages/homepage/homepage.component';
+
+import './App.scss';
+
+// remember, for this app, our header will be inside our main container so remove
+// <Header /> below and insert <Header /> in our homepage.component.jsx file
+class App extends React.Component {
+  
+    render() {
+
+        return (
+             
+            <Switch>
+                <Route path="/"  exact={ true } component={ HomePage } />
+            </Switch>        
+
+        );
+
+    }
 }
 
 export default App;

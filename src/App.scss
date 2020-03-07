@@ -1,0 +1,170 @@
+
+// this files acts as our base.scss file
+
+// the color variables and font variables were taken from Jonus' _base.scss file
+
+
+// ==============================
+// COLOR VARIABLES
+// ==============================
+
+$color-primary      : rgba( 198, 153, 99, 1 );
+$color-primary-dark : rgba( 178, 132, 81, 1 );
+
+$color-secondary    : rgba( 16, 29, 44, 1 );
+$color-secondary-2  : rgba( 16, 29, 44, 0.85 );
+
+$color-grey-light-1 : rgba( 249, 247, 246, 1 );
+$color-grey-light-2 : rgba( 170, 170, 170, 1 );
+
+
+$color-grey-dark-1 : rgba( 84, 72, 58, 1 );
+$color-grey-dark-2 : rgba( 109, 93, 75, 1 );
+
+
+
+// ==============================
+// FONT VARIABLES
+// ==============================
+
+$font-primary-1  : 'Open Sans', Arial, sans-serif;
+$font-primary-2  : 'Nunito', Arial, sans-serif;
+$font-display-1  : 'Open Sans Condensed', Arial, sans-serif;
+$font-display-2  : 'Josefin Sans', Arial, sans-serif;
+
+
+
+
+// responsive change #6
+// responsive change #14
+// responsive change #17
+
+// Jonus like to see where the design breaks and then create a breakpoint at the nearest 100
+// pixel value so if the design breaks at 550px, for example, then Jonus will create a
+// breakpoint at 600px
+
+
+// ==============================
+// RESPONSIVE BREAKPOINTS
+// ==============================
+
+$bp-largest : 80em;   // 1280px / 16px or the average font size in most browsers = 80em
+$bp-large   : 62.5em; // 1000px / 16px or the average font size in most browsers = 62.5em
+$bp-medium  : 50em; // 800px / 16px or the average font size in most browsers = 50em
+$bp-small   : 37.5em; // 600px / 16px or the average font size in most browsers = 37.5em
+
+
+
+// ==============================
+// BUTTON MIXIN
+// ==============================
+
+@mixin button {
+    padding : 1.8rem 3.0rem;
+
+    border        : none; // get rid of the default border
+    border-radius : 0; // get rid of the default radius 
+
+    font-family    : $font-display-2;
+    font-size      : 1.5rem;  
+    color          : rgba( 255, 255, 255, 1 );
+    text-transform : uppercase; 
+
+    background-color : $color-primary;
+
+    transition : all 0.2s ease-out; 
+    cursor     : pointer;
+
+    &:hover {
+        background-color : $color-primary-dark;
+    }
+}
+
+
+
+// ==============================
+// MY BASE STYLES
+// ==============================
+
+// Jonus said to start with a global reset
+*,
+*::before,
+*::after {
+    margin  : 0;
+    padding : 0;
+
+    box-sizing : border-box;
+}
+
+
+// styles for the html section
+html {
+    font-size : 62.5%; // 1 rem = 10px
+    
+    // responsive change #7
+    @media only screen and ( max-width : $bp-largest ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 50.0%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1200px, now our font will be reduced to 16px ( 50% * 16px = 8px * 2rem = 16px )
+        // automatically on small screens or screens less than 1200px and all this is the
+        // result from using this one media query
+
+        // so now 1rem equals 8px
+
+        // I tested this and it works and looks good
+
+        // once our viewport shrinks to 1000px and below then we'll move the sidebar to the
+        // top of the container and to do that let's start by adding a new breakpoint above
+        // and then go to homepage.styles.scss
+
+        font-size : 50%;
+
+    }
+
+}
+
+
+// styles for the body section
+body {
+    overflow-x : hidden; // get rid of horizontal scroll bar
+
+    font-family : $font-primary-2;
+    font-weight : 300;
+    color       : $color-grey-dark-2;
+    line-height : 1.6;
+
+    // background : rgba( 227, 227, 232, 1 );
+    // let's go with a white background for this site
+    background : rgba( 255, 255, 255, 1 );    
+
+    @media all and ( max-width : 480px ) {
+
+        background : rgba( 255, 255, 255, 1 );
+
+    }
+
+    @media all and ( max-width : 320px ) {
+
+        overflow-x : scroll;
+
+    }
+}
+
+
+// special styles to apply to all pages
+input::-moz-focus-inner { // remove input padding in FF
+	padding : 0;
+
+	border  : 0;
+}
+
+
+// make sure IE10 works in snap mode
+@-ms-viewport {
+	width : device-width;
+}
+
+

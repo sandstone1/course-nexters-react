@@ -1,0 +1,39 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.sidebar {
+
+    grid-area : sidebar;
+
+    // let's use flexbox to center the hamburger icon and Jonus said flexbox is the perfect
+    // solution for aligning and centering small stuff
+
+    // when we got to lecture 121, I changed the layout for the sidebar from flexbox to grid
+
+    // responsive change #9
+
+    display               : grid;
+    grid-template-rows    : min-content;
+    grid-template-columns : min-content;
+    justify-content       : center;
+
+    background-color : $color-primary;
+
+}
+
+
+// responsive change #10
+
+@media only screen and ( max-width : $bp-large ) {
+
+    .sidebar {
+
+        // now that the sidebar is on top center the hamburger icon vertically
+        
+        align-content   : center;
+        justify-content : end;
+      
+    }
+
+}

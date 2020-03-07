@@ -1,0 +1,105 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.features {
+    grid-area             : features;
+
+    // remember, features is a grid item but we also want features to be a grid container
+
+    display               : grid;
+    grid-template-rows    : auto auto; // auto is the default value here
+
+    // grid-template-columns : repeat( 3, 1fr );
+
+    grid-template-columns : repeat( auto-fit, minmax( 30rem, 1fr ) );
+    grid-gap              : 6rem; 
+    margin                : 15rem 0;
+
+    // remember that the little icon images next to the content for each features comes
+    // from an SVG icon sprite and this is included in our image folder so each feature will
+    // have a SVG icon, h4 heading and a paragragh and let's go back to our html file to
+    // includes these items
+
+    // grid item for .features
+    > .feature {
+
+        // create a new grid container for the svg icon, header and paragraph
+
+        display               : grid;
+
+        // for the rows, we just want them to be the size of the content so we don't really need to
+        // define the rows but I wrote " grid-template-rows : repeat( 2, min-content ); " in any case
+
+        // remember the -1 in " grid-row : 1 / -1; " means the row should span to the end of the
+        // explicit grid so if we do not define the rows in grid-template-rows then -1 will not
+        // work under these circumstances
+
+        grid-template-rows    : repeat( 2, min-content );
+
+        // for the columns, we want the first column to be the size of the icon and then the
+        // second column will take up the remaining space
+
+        // now we change " grid-template-columns : repeat( 3, 1fr ); " in the above .features class
+        // so that we can make the features section reponsive without writing any media queries and
+        // we do that by writing
+        // " grid-template-columns : repeat( auto-fit, minmax( 30rem, 1fr ) ); " in the above
+        // .features class and this will make the features section responsive so that as the
+        // viewport shrinks in size the 3 initial columns become 2 columns and then the 2 columns
+        // eventually become 1 column
+
+        // remember, grid is not only useful for the big layout parts but grid is also useful for
+        // very small components as long as those components need a 2 dimensional layout
+        // structure
+
+        grid-template-columns : min-content 1fr;
+        grid-row-gap          : 1.5rem;
+        grid-column-gap       : 2.5rem;
+
+        // by doing " align-items : center; " below we centered the h4 heading on row one, which was
+        // necessary since the svg icon had a greater height than the h4 heading so by centering the
+        // heading it created a more professional look and matched the project look and feel as well
+
+        align-items           : center;
+
+        // grid item for .feature
+        > .feature-icon {
+            width  : 4.5rem;
+            height : 4.5rem;
+    
+            // let's change the color of the svg icon and we do that by using the " fill " property
+
+            fill : $color-primary;
+        }
+    
+        // grid item for .feature
+        > .feature-heading-4 {
+            font-family : $font-display-2;
+            font-size   : 1.9rem;
+            font-weight : 400;
+            color       : $color-grey-dark-1;
+        }
+    
+        // grid item for .feature
+        > .feature-text {
+            grid-row    : 2 / 3;
+            grid-column : 2 / 3; 
+
+            font-size : 1.7rem;
+        }
+    }
+}
+
+
+
+// responsive change #21
+
+@media only screen and ( max-width : $bp-medium ) {
+
+    .features {
+
+        margin : 12rem 0;
+
+    }
+
+}

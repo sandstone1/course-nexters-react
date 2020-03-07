@@ -1,0 +1,162 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+.realtors {
+    grid-area : realtors;
+
+    // after we had already wrote most of the code in this file, we still needed to center
+    // vertically the heading-h3 text and the grid container and we used grid to do this
+    // or " display : grid; " and " align-content : center; "
+
+    // remember the grid container below contained 2 items ( i.e. the heading-h3 text and
+    // the grid container created in &--list {} below ) so the grid container for .realtors
+    // contained 2 rows and 1 column and we did not need to define " grid-template-rows "
+    // or " grid-template-columns " we just needed to define the 2 key value pairs or 
+    // " display : grid; " and " align-content : center; " in order to vertically center
+    // the .realtors grid
+
+    // remember, I already horizontally centered the .realtors--list grid in the selector
+    // below ( i.e.  &--list {} ) so I did not need to horizontally center the ,realtors
+    // grid but if this was needed I could have horizontally centered the .realtors grid
+    // by doing " justify-content : center; "
+
+    display       : grid;
+    align-content : center;
+
+    // we needed to add some spacing between the heading-h3 text and the grid container in
+    // &--list {} so we used " grid-row-gap "
+
+    grid-row-gap  : 2rem;
+
+    padding : 3rem;
+
+    background-color : $color-secondary;
+
+    .heading-h3 {
+        font-family    : $font-display-2;
+        font-size      : 1.6rem; 
+        font-weight    : 400;
+        color          : $color-primary;
+        text-align     : center;
+        text-transform : uppercase; 
+    }
+
+    &--list {
+
+        display               : grid;
+
+        // we could have left out " grid-template-rows : repeat( 3, auto ); " but I decided
+        // to put it here anyway just be explicit with our code
+
+        grid-template-rows    : repeat( 3, auto );
+
+        // we know the first column will be 7rems wide ( see &--img {} below ) and we will
+        // set the first column to " min-content " ( although we could have used " max-content "
+        // for the first column ) and we will set the second column to " max-content "
+
+        grid-template-columns : min-content max-content;
+        justify-content       : center;
+        align-items           : center;
+        
+        // for grid-row-gap, we do " grid-row-gap ; 5vh; " and the reason we use 5vh is that
+        // we want the vertical spacing between the grid items to shrink as the viewport
+        // height shrinks
+
+        grid-row-gap          : 5vh;
+        grid-column-gap       : 2rem;
+
+    }
+
+    // grid will put the images in the first column
+
+    &--img {
+
+        // Jonus said it is always best to do " display : block; " with images
+
+        display : block;
+
+        // to shrink the images we just define the width and not the height so do
+        // " width : 7rem; "
+
+        width   : 7rem;
+
+        // to round the images, do " border-radius : 50%; "
+
+        border-radius : 50%; 
+
+    }
+
+    // grid will put the div in the second column
+
+    .heading-4 {
+        font-family : $font-display-2;
+        font-size   : 1.9rem;
+        font-weight : 400;
+        color       : $color-grey-light-1;
+    }
+
+    &--sold {
+
+        // per Jonus' recommendation, we moved the text up just a little bit because
+        // it looked better that way
+
+        margin : -0.3rem 0 0 0;
+        
+        color          : $color-grey-light-2;
+        text-transform : uppercase;
+
+    }
+
+}
+
+
+
+// responsive change #16
+
+@media only screen and ( max-width : $bp-medium ) {
+
+    .realtors {
+
+        padding : 6rem;
+
+        background-color : $color-grey-light-1;
+
+        &--list {
+
+            grid-template-rows    : auto;
+            grid-template-columns : repeat( 3, min-content max-content );
+
+        }
+
+        .heading-4 {
+            color : $color-grey-dark-1;
+        }
+
+        &--sold {            
+            color : $color-grey-dark-1;
+        }
+
+    }
+
+}
+
+
+
+
+// responsive change #18
+
+@media only screen and ( max-width : $bp-small ) {
+
+    .realtors {
+
+        &--list {
+
+            grid-template-rows    : repeat( 3, auto );
+            grid-template-columns : min-content max-content;    
+
+        }
+
+    }
+
+}

@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 // import in our stylesheet
 import './sidebar-nav.styles.scss';

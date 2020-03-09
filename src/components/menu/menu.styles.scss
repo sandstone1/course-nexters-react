@@ -51,9 +51,9 @@
             padding               : 1.5rem 0 1.5rem 0;
 
             // keep the size for border-bottom at 0.1px and not 0.1rem otherwise the border will
-            // disappear when viewing the menu on mobile devices
+            // tend to disappear as the viewport shrinks
 
-            border-bottom : 0.1px inset rgba( 0, 0, 0, .1 );
+            border-bottom : 1px inset rgba( 0, 0, 0, .1 );
 
             font-family     : $font-display-2; 
             font-size       : 2.0rem;

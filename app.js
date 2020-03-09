@@ -9883,7 +9883,10 @@ export default Menu;
             grid-column-gap       : 1.0rem;
             padding               : 1.5rem 0 1.5rem 0;
 
-            border-bottom : 0.1rem inset rgba( 0, 0, 0, .1 );
+            // keep the size for border-bottom at 0.1px and not 0.1rem otherwise the border will
+            // tend to disappear as the viewport shrinks
+
+            border-bottom : 0.1px inset rgba( 0, 0, 0, .1 );
 
             font-family     : $font-display-2; 
             font-size       : 2.0rem;

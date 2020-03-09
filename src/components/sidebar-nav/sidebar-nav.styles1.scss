@@ -1,0 +1,100 @@
+
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+
+.sidebar-nav {
+
+    // responsive change #11
+    // deleted " height : 7rem; "
+
+    // in order to get the hand symbol to work when hovering the hamburger icon, I had to
+    // add " cursor : pointer; " to this selector and to the &--btn selector below
+
+    cursor : pointer;
+
+    &--btn {
+
+        // responsive change #12
+        // added some margin-top to give some spacing between the hamburger icon and the top
+        // of the container and added 4rem to margin-bottom to make the clickable area larger
+
+        margin   : 4rem 0 4rem 0;
+
+        border        : none;
+        border-radius : 0;
+
+        cursor : pointer;
+
+
+        // ==============================
+        // HOW TO CREATE HAMBURGER ICON IN CSS - BEGINNING
+        // ==============================
+
+
+        // we will use css to create the button or hamburger icon and in order to do that we
+        // will add all the key value pairs and pseudo classes listed below:
+
+        width  : 4.5rem;
+        height : 0.2rem;
+
+        background-color : rgba( 255, 255, 255, 1 );
+
+        &::before,
+        &::after {
+            display : block;            
+            width   : 4.5rem;
+            height  : 0.2rem;
+    
+            background-color : rgba( 255, 255, 255, 1 );
+
+            // in order to make these pseudo elements visible we need to add the
+            // content property
+
+            content : '';
+        }
+
+        // move the ::before pseudo class up and the ::after pseudo class down
+
+        &::before {
+            transform : translate3d( 0, -1.2rem, 0 );
+        }
+
+        // to give the same spacing to the third line as the first line ( in comparison to the
+        // second line or middle line ) we need to change the translateY value from 1.5rem to
+        // 1.3rem
+
+        &::after {
+            transform : translate3d( 0, 1.00rem, 0 );
+        }
+
+
+        // ==============================
+        // HOW TO CREATE HAMBURGER ICON IN CSS - ENDING
+        // ==============================
+
+
+    }
+
+}
+
+
+
+// responsive change #13
+
+@media only screen and ( max-width : $bp-large ) {
+
+    .sidebar-nav {
+
+        &--btn {
+
+            // no longer need the margin-top or margin-bottom but we need margin-right
+            // now
+            
+            margin : 0 3rem 0 0;
+
+        }
+
+    }
+
+}

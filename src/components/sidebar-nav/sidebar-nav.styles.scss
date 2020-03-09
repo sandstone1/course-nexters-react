@@ -5,9 +5,6 @@
 
 .sidebar-nav {
 
-    // responsive change #11
-    // deleted " height : 7rem; "
-
     // in order to get the hand symbol to work when hovering the hamburger icon, I had to
     // add " cursor : pointer; " to this selector and to the &--btn selector below
 
@@ -15,66 +12,130 @@
 
     &--btn {
 
-        // responsive change #12
-        // added some margin-top to give some spacing between the hamburger icon and the top
-        // of the container and added 4rem to margin-bottom to make the clickable area larger
+        // had to give the button a height of 0 in order to remove a 4th line from the hambuger
+        // icon
 
-        margin   : 4rem 0 4rem 0;
+        height   : 0;
+
+        // we need the following to 2 key value pairs in order to prevent any unusual styling
+        // from the browser
 
         border        : none;
         border-radius : 0;
 
         cursor : pointer;
 
-
-        // ==============================
-        // HOW TO CREATE HAMBURGER ICON IN CSS - BEGINNING
-        // ==============================
+    }
 
 
-        // we will use css to create the button or hamburger icon and in order to do that we
-        // will add all the key value pairs and pseudo classes listed below:
+    // ==============================
+    // HOW TO CREATE HAMBURGER ICON IN CSS VERSION 2 - BEGINNING
+    // ==============================
 
-        width  : 4.5rem;
-        height : 0.2rem;
 
-        background-color : rgba( 255, 255, 255, 1 );
+    // we will use css to create the button or hamburger icon and in order to do that we
+    // will add all the key value pairs and pseudo classes listed below:
+
+    &--icon {
+
+        position : relative;
+
+        // give our element some extra margin
+
+        margin   : 4rem 0 4rem 0;
+
+        // select the icon element itself or " & " so here we are targeting the icon
+        // element and the before and after puesdo elements for the icon element
+
+        &,
+        &::before,
+        &::after {
+
+            display : inline-block;
+            width   : 4.5rem;
+
+            // we are using 2 px instead of 0.2rem because we don't want this value to change
+
+            height  : 2px;
+
+            background-color : rgba( 255, 255, 255, 1 );
+ 
+        }
+
+        // now we are just targeting the before and after puesdo elements for the icon element
 
         &::before,
         &::after {
-            display : block;            
-            width   : 4.5rem;
-            height  : 0.2rem;
-    
-            background-color : rgba( 255, 255, 255, 1 );
+
+            position : absolute;
+
+            // let's make sure all 3 lines are positioned at " left : 0; "
+
+            left     : 0;
 
             // in order to make these pseudo elements visible we need to add the
             // content property
 
             content : '';
+
+           // please see below for details on the animation that we are transitioning
+            
+           transition : all 0.2s ease;
+
+
         }
 
         // move the ::before pseudo class up and the ::after pseudo class down
 
         &::before {
-            transform : translate3d( 0, -1.2rem, 0 );
-        }
 
-        // to give the same spacing to the third line as the first line ( in comparison to the
-        // second line or middle line ) we need to change the translateY value from 1.5rem to
-        // 1.3rem
+            top : -1.2rem;
+
+        }
 
         &::after {
-            transform : translate3d( 0, 1.00rem, 0 );
+
+            top : 1.2rem;
+
         }
 
+    }
 
-        // ==============================
-        // HOW TO CREATE HAMBURGER ICON IN CSS - ENDING
-        // ==============================
+    // now we'll start working on the creating an animated X effect ( 135deg and -135deg ) or
+    // the animated pipe effect ( 90deg and -90deg ) and we'll start by making the middle
+    // line disappear when we hover the button element
 
+    &--btn:hover &--icon {
+
+        background-color : transparent;
 
     }
+
+    // now rotate the before and after puesdo elements but for this to work we have to move the
+    // puesdo elements to the middle so apply " top : 0; " to both the before and after puesdo
+    // elements
+
+    &--btn:hover &--icon::before {
+
+        top : 0;
+
+        transform : rotate( 90deg );
+
+    }
+
+    &--btn:hover &--icon::after {
+
+        top : 0;
+
+        transform : rotate( -90deg );
+
+    }
+
+
+    // ==============================
+    // HOW TO CREATE HAMBURGER ICON IN CSS VERSION 2 - ENDING
+    // ==============================
+
 
 }
 
@@ -86,7 +147,7 @@
 
     .sidebar-nav {
 
-        &--btn {
+        &--icon {
 
             // no longer need the margin-top or margin-bottom but we need margin-right
             // now

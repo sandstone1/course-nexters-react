@@ -13,18 +13,272 @@
 
 
 
+
+
+
 // ==============================
-// STEPS TO RUN THE NEXTERS REACT APPLICATION ON AN APACHE SERVER
+// HOMEPAGE SET UP IN PACKAGE.JSON IN ORDER TO RUN THE NEXTERS REACT APPLICATION ON GITHUB PAGES,
+// AN APACHE SERVER AND HEROKU
 // ==============================
 
-// Step #1
-// change the " homepage " key value pair in the monsters_rolodex/package.json file
-// change "homepage": "https://sandstone1.github.io/nexters-react", to
-// "homepage": "https://stoneburyhomes.com/nexters_react/",
-// and remember this homepage key value pair works for Github Pages
-// => "homepage": "https://sandstone1.github.io/nexters-react",
-// and this homepage key value pair works for the Apache Server
-// => "homepage": "https://stoneburyhomes.com/nexters_react/",
+
+// remember, to change or remove the " homepage " key value pair in the
+// nexters-react/package.json file
+// for GitHub Pages use / add: "homepage": "https://sandstone1.github.io/nexters-react", to
+// the package.json file
+// for an Apache server use / add: "homepage": "https://stoneburyhomes.com/nexters_react/", to
+// the package.json file
+// for Heroku remove the " homepage " key value pair in the package.json file; otherwise.
+// heroku will throw and error like: " Uncaught SyntaxError: Unexpected token < " and
+// I found the answer to this error on stackoverflow or
+// " https://stackoverflow.com/questions/54340240/create-react-app-build-uncaught-syntaxerror-unexpected-token "
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// WORKFLOW - LOCALHOST SOLUTION - STEPS TO GETTING A CREATE REACT APP UP AND RUNNING ON HEROKU
+// ==============================
+
+
+
+// ****************
+// STEP 1 - CREATE A GITHUB REPOSITORY FOR THE PROJECT AND CONNECT PROJECT TO GITHUB
+// ****************
+
+// after creating a new repository in GitHub I need to connect my GitHub repository to my
+// local machine and I do that by typing the following 7 commands in my project root folder and
+// for nexters react that project root folder was " Rogers-iMac:nexters-react Home$ " so the
+// commands are:
+
+// #1 - git init ( from GitHub documentation ) ( I think create react app may do this for us automatically )
+
+// #2 - git status
+
+// #3 - git add .
+
+// #4 - git add README.md ( from GitHub documentation )
+
+// #5 - git commit -m "first commit" ( from GitHub documentation )
+
+// #6 - git remote add origin git@github.com:sandstone1/nexters_react.git ( from GitHub documentation )
+// and if we do #6 twice then we get the following message in the terminal:
+// " fatal: remote origin already exists. "
+
+// #7 - git push -u origin master ( from GitHub documentation )
+// git push does take some arguments and the first argument is the -u flag and this flag creates
+// the association between our local code and the upstream GitHub repository and we only have to
+// run the -u flag one time and will never run it again and the next thing we are going to type
+// is the remote or " origin " and the then the branch and by default the branch we are going
+// to be working with is called " master "
+
+
+// # Git Commands
+
+// git init - creates a new git repo
+// git status - allows us to view changes to our project
+// git add . - allows us to add files to the staging area
+// git commit -m "Message" - allows us to create a new commit with files from the staging area
+// git push - push our changes to GitHub
+// git log - allows us to view recent commits
+// git pull - pulls the latest changes from GitHub
+// git branch - will show us what branches we have and how many we have
+// git branch newBranchName - allows us to add a new branch and give it a name
+// git checkout newBranchName - move to the newBranchName branch and start working on that branch
+// git merge master - merge master with the new branch
+// git push origin conflict - if we get a error saying " git push --set-upstream origin conflict "
+
+
+// updating my GitHub repository going forward:
+
+// " git status "
+// " git add . "
+// " git commit -m " Message " "
+// " git push "
+
+
+
+// ****************
+// STEP 2 - DELETE MY YARN.LOCK FILE
+// ****************
+
+
+
+// ****************
+// STEP 3 - CREATE OUR HEROKU PROJECT FOR OUR REACT APP
+// ****************
+
+// we do that by typing the following in the project root folder in the terminal ( remember to
+// replace " nexters-react " below with our current project name ):
+
+// " heroku create nexters-react --buildpack https://github.com/mars/create-react-app-buildpack.git "
+
+
+
+// ****************
+// STEP 4 - PUSH OUR CHANGES TO OUR PROJECT ON HEROKU
+// ****************
+
+// " git push heroku master "
+
+
+
+// ****************
+// STEP 5 - OPEN OUR REACT APP ON THE HEROKU PROVIDED URL
+// ****************
+
+// after we run " git push heroku master " we will see a live log of heroku spinning up
+// our project and once heroku is done building our site then heroku will host our
+// site and serve it with the following url: " https://nexters-react.herokuapp.com/ "
+
+
+
+// ****************
+// STEP 6 - CHECK APP AND MAKE SURE IT IS WORKING CORRECTLY
+// ****************
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// WORKFLOW - LOCALHOST SOLUTION - STEPS TO GETTING A CREATE REACT APP UP AND RUNNING ON NETLIFY
+// ==============================
+
+
+
+// ****************
+// STEP 1 - CREATE A GITHUB REPOSITORY FOR THE PROJECT AND CONNECT PROJECT TO GITHUB
+// ****************
+
+// after creating a new repository in GitHub I need to connect my GitHub repository to my
+// local machine and I do that by typing the following 7 commands in my project root folder and
+// for nexters react that project root folder was " Rogers-iMac:nexters-react Home$ " so the
+// commands are:
+
+// #1 - git init ( from GitHub documentation ) ( I think create react app may do this for us automatically )
+
+// #2 - git status
+
+// #3 - git add .
+
+// #4 - git add README.md ( from GitHub documentation )
+
+// #5 - git commit -m "first commit" ( from GitHub documentation )
+
+// #6 - git remote add origin git@github.com:sandstone1/nexters_react.git ( from GitHub documentation )
+// and if we do #6 twice then we get the following message in the terminal:
+// " fatal: remote origin already exists. "
+
+// #7 - git push -u origin master ( from GitHub documentation )
+// git push does take some arguments and the first argument is the -u flag and this flag creates
+// the association between our local code and the upstream GitHub repository and we only have to
+// run the -u flag one time and will never run it again and the next thing we are going to type
+// is the remote or " origin " and the then the branch and by default the branch we are going
+// to be working with is called " master "
+
+
+// # Git Commands
+
+// git init - creates a new git repo
+// git status - allows us to view changes to our project
+// git add . - allows us to add files to the staging area
+// git commit -m "Message" - allows us to create a new commit with files from the staging area
+// git push - push our changes to GitHub
+// git log - allows us to view recent commits
+// git pull - pulls the latest changes from GitHub
+// git branch - will show us what branches we have and how many we have
+// git branch newBranchName - allows us to add a new branch and give it a name
+// git checkout newBranchName - move to the newBranchName branch and start working on that branch
+// git merge master - merge master with the new branch
+// git push origin conflict - if we get a error saying " git push --set-upstream origin conflict "
+
+
+// updating my GitHub repository going forward:
+
+// " git status "
+// " git add . "
+// " git commit -m " Message " "
+// " git push "
+
+
+
+// ****************
+// STEP 2 - DELETE MY YARN.LOCK FILE
+// ****************
+
+
+
+// ****************
+// STEP 3 - CREATE OUR NETLIFY PROJECT FOR OUR REACT APP
+// ****************
+
+// there are 4 steps to creating a new site on Netlify
+
+// STEP 1: Connect to GitHub
+
+// I connected Netlify to my GitHub account so now as soon as I push a change to one of my
+// repositories on GitHub that change is automatically updated to that same site on Netlify
+
+// STEP 2: Pick a repository
+
+// when creating a new site, Netlify shows me a page that list all of my GitHub repositories and
+// by choosing one of my repositories I can create a new site so in this case, I will choose
+// my sandstone1/nexters_react repository
+
+// STEP 3: Build options and deploy
+
+// I have 3 build options: (1) what branch do I want to deploy and in this case I want to deploy
+// my master branch so " Branch to deploy : master " (2) " Build command : npm run build " (3)
+// " Publish directory : build/ "
+
+// STEP 4: Click on the " Deploy site " button
+
+
+
+// ****************
+// STEP 5 - OPEN OUR REACT APP IN THE NETLIFY PROVIDED URL
+// ****************
+
+// once Netlify is done building our site then Netlify will host our site and serve it with
+// the following url: " https://nostalgic-shockley-32902e.netlify.com "
+
+// so now my site has been deployed and I have a Netlify generated URL
+
+// NEXT STEPS: Set up a custom domain and then secure my site with HTTPS
+
+
+
+// ****************
+// STEP 6 - CHECK APP AND MAKE SURE IT IS WORKING CORRECTLY
+// ****************
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -57,6 +311,21 @@
 // node-sass: " Rogers-iMac:nexters-react Home$ npm install node-sass " and this will include
 // sass in our Nexter's react project
 // lecture 123: Browser Support for CSS Grid
+
+
+
+// #4
+// font-awesome: " Rogers-iMac:nexters-react Home$ npm install --save font-awesome " and this
+// will include the latest version of font awesome in our Nexter's react project
+// lecture 123: Browser Support for CSS Grid
+
+
+
+
+
+
+
+
 
 
 
@@ -8869,6 +9138,12 @@ See lecture 120 for the  realtors.styles.scss file
 
 
 
+
+
+
+// Lecture Extra: GitHub and Heroku
+
+
 // I created a new repository in GitHub called " nexters-react " and after I created the repository
 // I had to connect my GitHub repository to my local machine and I did that by tpying the command
 // in " Rogers-iMac:nexters-react Home$ git init
@@ -9212,6 +9487,8 @@ Rogers-iMac:nexters-react Home$
 // " git push heroku master "
 
 
+
+
 // after I run the above command:
 /*
 Rogers-iMac:nexters-react Home$ git push heroku master 
@@ -9267,9 +9544,7 @@ Rogers-iMac:nexters-react Home$
 
 
 
-
 /*
-
 Rogers-iMac:nexters-react Home$ git status
 On branch master
 Your branch is up to date with 'origin/master'.
@@ -9424,6 +9699,467 @@ To https://git.heroku.com/nexters-react.git
  * [new branch]      master -> master
 Rogers-iMac:nexters-react Home$ 
 */
+
+
+// after we run " git push heroku master " we will see a live log of heroku spinning up
+// our project and once heroku is done building our site then heroku will host our
+// site and serve it with the following url: " https://nexters-react.herokuapp.com/ "
+// and now if we check our application we see it is working as it was before and the
+// only thing that may not be working is our sign in functionality with Google sign
+// in and to fix that we copy our url or " https://nexters-react.herokuapp.com/ " and
+// go to firebase and go to our project and then click on the authentication tab and then
+// click on the " sign-in method " tab and in the authorized domain section we will click
+// on the " Add domain " button and then paste our heroku link and then click the " Add "
+// button and now sign in will work as expected
+
+
+
+
+
+
+
+
+// installed font awesome and will use it in our Menu component
+
+// remember this one for a nice spinner: <i className="fa fa-spinner fa-spin"></i>
+
+
+
+// ==============================
+// GO TO SRC/COMPONENTS/MENU/MENU.COMPONENT.JSX
+// ==============================
+
+
+
+
+// ==============================
+// BACK FROM SRC/COMPONENTS/MENU/MENU.COMPONENT.JSX
+// ==============================
+
+
+import React from 'react';
+// will need to provide links so import in links from react router dom
+import { Link } from 'react-router-dom';
+// import our stylesheet
+import './menu.styles.scss';
+// import font awesome
+import '../../../node_modules/font-awesome/css/font-awesome.min.css'; 
+
+
+class Menu extends React.Component {
+
+    render() {
+
+        let visibility = "hide";
+
+        if ( this.props.menuVisibility ) {
+
+            visibility = "show";
+
+        }
+
+        return (
+
+            <div id="menu"
+
+                onMouseDown={ this.props.handleMouseDown }
+                className={ visibility }
+
+            >
+
+                <ul className="header-nav">
+
+                    <li className="header-nav--item">
+                        <Link className="header-nav--link" to="/">
+                            <span>
+                                <i className="fa fa-home"></i>
+                            </span>
+                            Home
+                        </Link>
+                    </li>
+                    
+                    <li className="header-nav--item">
+                        <Link className="header-nav--link" to="/">
+                            <span>
+                                <i className="fa fa-user-circle"></i>
+                            </span>
+                            About
+                        </Link>
+                    </li>
+
+                    <li className="header-nav--item">
+                        <Link className="header-nav--link" to="/">
+                            <span>
+                                <i className="fa fa-address-card"></i>
+                            </span>
+                            Contact
+                        </Link>
+                    </li>
+
+                    <li className="header-nav--item">
+                        <Link className="header-nav--link header-nav--link--last" to="/">
+                            <span>
+                                <i className="fa fa-search"></i>
+                            </span>
+                            Search
+                        </Link>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        );
+        
+    }
+
+}
+
+export default Menu;
+
+
+
+
+// -------------------- END OF FILE
+
+
+
+
+
+// ==============================
+// BACK FROM SRC/COMPONENTS/MENU/MENU.STYLES.SCSS
+// ==============================
+
+
+/*
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+#menu {
+
+    position : fixed;
+    top      : 0;
+    left     : 0;
+    z-index  : 100;
+    width    : 30vw;
+    height   : 100vh;
+
+    background-color : $color-primary;
+
+    cursor     : pointer;
+    transition : all .3s ease-out;
+
+    &.hide {
+        transform : translate3d( -30vw, 0, 0 );
+    }
+
+    &.show {
+        transform : translate3d( 0vw, 0, 0 );
+    }
+    
+    .header-nav{
+
+        display               : grid;
+        grid-template-rows    : repeat( 4, auto );
+        grid-template-columns : 25rem;
+        justify-content       : center; 
+        grid-gap              : 2rem;
+        padding               : 2rem 0 0 0;
+
+        list-style : none;
+
+
+        // From the web: "The :link CSS pseudo-class represents an element that has not yet
+        // been visited."
+
+        &--link:link,
+        &--link:visited {
+
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 4rem 5rem;
+            align-items           : center;
+            justify-items         : start;
+            grid-column-gap       : 1.0rem;
+            padding               : 1.5rem 0 1.5rem 0;
+
+            border-bottom : 0.1rem inset rgba( 0, 0, 0, .1 );
+
+            font-family     : $font-display-2; 
+            font-size       : 2.0rem;
+            color           : rgba( 255, 255, 255, 1 );
+            text-align      : center;
+            text-decoration : none;
+            text-transform  : uppercase;
+
+            transition : all 0.2s ease-out;
+        }
+
+        &--link:hover,
+        &--link:active {
+            background-color : rgba( 255, 255, 255, 0.05 );
+
+            // move the background color up just a little to add a nice hoover effect
+            transform: translate3d( 0, -0.3rem, 0); 
+        }
+
+    }
+
+}
+
+
+
+
+// responsive change #22
+
+@media only screen and ( max-width : $bp-small ) {
+
+    #menu {
+
+        width    : 40vw;
+    
+        transition : all .2s ease-out;
+   
+        &.hide {
+
+            transform : translate3d( -40vw, 0, 0 );
+
+        }
+
+    }
+
+}
+*/
+
+
+
+// -------------------- END OF FILE
+
+
+
+
+
+
+// create the X or | animation effect when hovering the hamburger icon
+
+
+
+// ==============================
+// GO TO SRC/COMPONENTS/SIDEBAR-NAV/SIDEBAR-NAV.COMPONENT.JSX
+// ==============================
+
+
+
+
+// ==============================
+// BACK FROM SRC/COMPONENTS/SIDEBAR-NAV/SIDEBAR-NAV.COMPONENT.JSX
+// ==============================
+
+
+import React from 'react';
+// import in our stylesheet
+import './sidebar-nav.styles.scss';
+
+
+const SidebarNav = ( { handleMouseDown } ) => (
+
+    <div className="sidebar-nav"
+        onMouseDown={ handleMouseDown }
+    >
+
+        <button
+            className="sidebar-nav--btn"
+        >
+            <span className="sidebar-nav--icon"></span>
+        </button>
+
+    </div>
+
+);
+
+export default SidebarNav;
+
+
+
+// -------------------- END OF FILE
+
+
+
+
+
+// ==============================
+// BACK FROM SRC/COMPONENTS/SIDEBAR-NAV/SIDEBAR-NAV.STYLES.SCSS
+// ==============================
+
+
+/*
+// in order to use the sass variables in App.scss, I had to use @import "";
+@import "../../App.scss";
+
+
+.sidebar-nav {
+
+    // in order to get the hand symbol to work when hovering the hamburger icon, I had to
+    // add " cursor : pointer; " to this selector and to the &--btn selector below
+
+    cursor : pointer;
+
+    &--btn {
+
+        // had to give the button a height of 0 in order to remove a 4th line from the hambuger
+        // icon
+
+        height   : 0;
+
+        // we need the following to 2 key value pairs in order to prevent any unusual styling
+        // from the browser
+
+        border        : none;
+        border-radius : 0;
+
+        cursor : pointer;
+
+    }
+
+
+    // ==============================
+    // HOW TO CREATE HAMBURGER ICON IN CSS VERSION 2 - BEGINNING
+    // ==============================
+
+
+    // we will use css to create the button or hamburger icon and in order to do that we
+    // will add all the key value pairs and pseudo classes listed below:
+
+    &--icon {
+
+        position : relative;
+
+        // give our element some extra margin
+
+        margin   : 4rem 0 4rem 0;
+
+        // select the icon element itself or " & " so here we are targeting the icon
+        // element and the before and after puesdo elements for the icon element
+
+        &,
+        &::before,
+        &::after {
+
+            display : inline-block;
+            width   : 4.5rem;
+
+            // we are using 2 px instead of 0.2rem because we don't want this value to change
+
+            height  : 2px;
+
+            background-color : rgba( 255, 255, 255, 1 );
+ 
+        }
+
+        // now we are just targeting the before and after puesdo elements for the icon element
+
+        &::before,
+        &::after {
+
+            position : absolute;
+
+            // let's make sure all 3 lines are positioned at " left : 0; "
+
+            left     : 0;
+
+            // in order to make these pseudo elements visible we need to add the
+            // content property
+
+            content : '';
+
+           // please see below for details on the animation that we are transitioning
+            
+           transition : all 0.2s ease;
+
+
+        }
+
+        // move the ::before pseudo class up and the ::after pseudo class down
+
+        &::before {
+
+            top : -1.2rem;
+
+        }
+
+        &::after {
+
+            top : 1.2rem;
+
+        }
+
+    }
+
+    // now we'll start working on the creating an animated X effect ( 135deg and -135deg ) or
+    // the animated pipe effect ( 90deg and -90deg ) and we'll start by making the middle
+    // line disappear when we hover the button element
+
+    &--btn:hover &--icon {
+
+        background-color : transparent;
+
+    }
+
+    // now rotate the before and after puesdo elements but for this to work we have to move the
+    // puesdo elements to the middle so apply " top : 0; " to both the before and after puesdo
+    // elements
+
+    &--btn:hover &--icon::before {
+
+        top : 0;
+
+        transform : rotate( 90deg );
+
+    }
+
+    &--btn:hover &--icon::after {
+
+        top : 0;
+
+        transform : rotate( -90deg );
+
+    }
+
+
+    // ==============================
+    // HOW TO CREATE HAMBURGER ICON IN CSS VERSION 2 - ENDING
+    // ==============================
+
+
+}
+
+
+
+// responsive change #13
+
+@media only screen and ( max-width : $bp-large ) {
+
+    .sidebar-nav {
+
+        &--icon {
+
+            // no longer need the margin-top or margin-bottom but we need margin-right
+            // now
+            
+            margin : 0 3rem 0 0;
+
+        }
+
+    }
+
+}
+*/
+
+
+
+
+// -------------------- END OF FILE
+
 
 
 

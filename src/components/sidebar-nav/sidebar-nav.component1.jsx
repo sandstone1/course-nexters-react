@@ -14,7 +14,6 @@ const SidebarNav = ( { handleMouseDown } ) => (
         <button
             className="sidebar-nav--btn"
         >
-            <span className="sidebar-nav--icon"></span>
         </button>
 
     </div>

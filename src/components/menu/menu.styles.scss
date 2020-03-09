@@ -96,6 +96,17 @@
 
         }
 
+        .header-nav{
+
+            &--link:link,
+            &--link:visited {
+    
+                border-bottom : 1px inset rgba( 0, 0, 0, .2 );
+
+            }
+
+        }
+
     }
 
 }
@@ -113,17 +124,6 @@
         &.hide {
 
             transform : translate3d( -50vw, 0, 0 );
-
-        }
-
-        .header-nav{
-
-            &--link:link,
-            &--link:visited {
-    
-                border-bottom : 1px inset rgba( 0, 0, 0, .2 );
-
-            }
 
         }
 

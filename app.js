@@ -9912,7 +9912,7 @@ export default Menu;
 
 // responsive change #22
 
-@media only screen and ( max-width : $bp-small ) {
+@media only screen and ( max-width : $bp-large ) {
 
     #menu {
 
@@ -9923,6 +9923,46 @@ export default Menu;
         &.hide {
 
             transform : translate3d( -40vw, 0, 0 );
+
+        }
+
+    }
+
+}
+
+
+
+@media only screen and ( max-width : $bp-medium ) {
+
+    #menu {
+
+        width    : 50vw;
+    
+        transition : all .2s ease-out;
+   
+        &.hide {
+
+            transform : translate3d( -50vw, 0, 0 );
+
+        }
+
+    }
+
+}
+
+
+
+@media only screen and ( max-width : $bp-small ) {
+
+    #menu {
+
+        width    : 70vw;
+    
+        transition : all .2s ease-out;
+   
+        &.hide {
+
+            transform : translate3d( -70vw, 0, 0 );
 
         }
 

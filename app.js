@@ -280,6 +280,30 @@
 
 
 
+// ==============================
+// STEPS TO TAKE IN THE TERMINAL WHEN WE CHANGE OUR REPOSITORY NAME IN GITHUB
+// ==============================
+
+// STEP 1: 
+// Rogers-iMac:nexters-react Home$ git remote rm origin
+
+// STEP 2:
+// Rogers-iMac:nexters-react Home$ git remote add origin git@github.com:sandstone1/course-nexters-react.git
+
+// STEP 3:
+// Rogers-iMac:nexters-react Home$ git push -u origin master
+
+// now when we push our changes up to our newly named repository we will not get any errors in the
+// terminal
+
+
+
+
+
+
+
+
+
 
 
 

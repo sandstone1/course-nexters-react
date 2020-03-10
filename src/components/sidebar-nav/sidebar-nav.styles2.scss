@@ -23,12 +23,7 @@
         border        : none;
         border-radius : 0;
 
-        cursor  : pointer;
-
-        // had to do " outline : none; " in order to get rid of the weird outline or coloring
-        // around the button element after clicking the button
-
-        outline : none;
+        cursor : pointer;
 
     }
 
@@ -106,6 +101,41 @@
 
     }
 
+    // COMMENT OUT FOR RIGHT NOW UNTIL I FIGURE OUT WHAT'S GOING ON
+    /*
+
+    // now we'll start working on the creating an animated X effect ( 135deg and -135deg ) or
+    // the animated pipe effect ( 90deg and -90deg ) and we'll start by making the middle
+    // line disappear when we hover the button element
+
+    &--btn:hover &--icon {
+
+        background-color : transparent;
+
+    }
+
+    // now rotate the before and after puesdo elements but for this to work we have to move the
+    // puesdo elements to the middle so apply " top : 0; " to both the before and after puesdo
+    // elements
+
+    &--btn:hover &--icon::before {
+
+        top : 0;
+
+        transform : rotate( 90deg );
+
+    }
+
+    &--btn:hover &--icon::after {
+
+        top : 0;
+
+        transform : rotate( -90deg );
+
+    }
+
+    */
+
 
     // ==============================
     // HOW TO CREATE HAMBURGER ICON IN CSS VERSION 2 - ENDING
@@ -128,48 +158,6 @@
             // now
             
             margin : 0 3rem 0 0;
-
-        }
-
-        /*
-        // after clicking the button to hide the menu, the hamburger icon returns to its previous
-        // state or its original state as outlined in the code above
-        &.hide {
-            
-        }
-        */
-    
-        &.show {
-
-            // now we'll start working on the creating an animated X effect ( 135deg and -135deg ) or
-            // the animated pipe effect ( 90deg and -90deg ) and we'll start by making the middle
-            // line disappear when we hover the button element
-
-            .sidebar-nav--icon {
-
-                background-color : transparent;
-
-            }
-
-            // now rotate the before and after puesdo elements but for this to work we have to move the
-            // puesdo elements to the middle so apply " top : 0; " to both the before and after puesdo
-            // elements
-
-            .sidebar-nav--icon::before {
-
-                top : 0;
-
-                transform : rotate( 135deg );
-
-            }
-
-            .sidebar-nav--icon::after {
-
-                top : 0;
-
-                transform : rotate( -135deg );
-
-            }
 
         }
 

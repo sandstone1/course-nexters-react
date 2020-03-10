@@ -40,6 +40,7 @@ class Sidebar extends React.Component {
 
                 <SidebarNav
                     handleMouseDown={ this.handleMouseDown }
+                    menuVisibility={ this.state.visible }
                 />
                 <Menu
                     handleMouseDown={ this.handleMouseDown }

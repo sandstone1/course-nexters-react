@@ -5182,6 +5182,11 @@ export default TestimonialContent;
 
     > .btn {
         @include button();
+
+        // had to do " outline : none; " in order to get rid of the weird outline or coloring
+        // around the button element after clicking the button
+
+        outline : none;
     }
 
 
@@ -5885,6 +5890,11 @@ export default Homes;
             grid-column : 1 / -1;
 
             @include button();
+
+            // had to do " outline : none; " in order to get rid of the weird outline or coloring
+            // around the button element after clicking the button
+
+            outline : none;
         }
     
     }
@@ -8924,6 +8934,11 @@ See lecture 120 for the  realtors.styles.scss file
 
         @include button;
 
+        // had to do " outline : none; " in order to get rid of the weird outline or coloring
+        // around the button element after clicking the button
+
+        outline : none;
+
     }
 
 }
@@ -9910,7 +9925,7 @@ export default Menu;
             // keep the size for border-bottom at 0.1px and not 0.1rem otherwise the border will
             // tend to disappear as the viewport shrinks
 
-            border-bottom : 0.1px inset rgba( 0, 0, 0, .1 );
+            border-bottom : 1px inset rgba( 0, 0, 0, .15 );
 
             font-family     : $font-display-2; 
             font-size       : 2.0rem;
@@ -10028,21 +10043,46 @@ import React from 'react';
 import './sidebar-nav.styles.scss';
 
 
-const SidebarNav = ( { handleMouseDown } ) => (
+class SidebarNav extends React.Component {
 
-    <div className="sidebar-nav"
-        onMouseDown={ handleMouseDown }
-    >
+    render() {
 
-        <button
-            className="sidebar-nav--btn"
-        >
-            <span className="sidebar-nav--icon"></span>
-        </button>
+        let visibility = "hide";
 
-    </div>
+        if ( this.props.menuVisibility ) {
 
-);
+            visibility = "show";
+
+        }
+        
+        // in the div below, we are showing 2 class names and the second class name is
+        // dependent on the state of " visible " in the parent container or
+        // sidebar.component.jsx
+        return (
+
+            <div                
+                onMouseDown={ this.props.handleMouseDown }
+                className={ `sidebar-nav ${ visibility }` }
+            >
+
+                <button
+                    className="sidebar-nav--btn"
+                >
+
+                    <span
+                        className="sidebar-nav--icon">
+                    </span>
+
+                </button>
+
+            </div>
+
+        );
+
+    }
+
+}
+
 
 export default SidebarNav;
 
@@ -10084,7 +10124,12 @@ export default SidebarNav;
         border        : none;
         border-radius : 0;
 
-        cursor : pointer;
+        cursor  : pointer;
+
+        // had to do " outline : none; " in order to get rid of the weird outline or coloring
+        // around the button element after clicking the button
+
+        outline : none;
 
     }
 
@@ -10162,36 +10207,6 @@ export default SidebarNav;
 
     }
 
-    // now we'll start working on the creating an animated X effect ( 135deg and -135deg ) or
-    // the animated pipe effect ( 90deg and -90deg ) and we'll start by making the middle
-    // line disappear when we hover the button element
-
-    &--btn:hover &--icon {
-
-        background-color : transparent;
-
-    }
-
-    // now rotate the before and after puesdo elements but for this to work we have to move the
-    // puesdo elements to the middle so apply " top : 0; " to both the before and after puesdo
-    // elements
-
-    &--btn:hover &--icon::before {
-
-        top : 0;
-
-        transform : rotate( 90deg );
-
-    }
-
-    &--btn:hover &--icon::after {
-
-        top : 0;
-
-        transform : rotate( -90deg );
-
-    }
-
 
     // ==============================
     // HOW TO CREATE HAMBURGER ICON IN CSS VERSION 2 - ENDING
@@ -10214,6 +10229,46 @@ export default SidebarNav;
             // now
             
             margin : 0 3rem 0 0;
+
+        }
+
+        // after clicking the button to hide the menu, the hamburger icon returns to its previous
+        // state or its original state as outlined in the code above
+        // &.hide {
+            
+        // }
+    
+        &.show {
+
+            // now we'll start working on the creating an animated X effect ( 135deg and -135deg ) or
+            // the animated pipe effect ( 90deg and -90deg ) and we'll start by making the middle
+            // line disappear when we hover the button element
+
+            .sidebar-nav--icon {
+
+                background-color : transparent;
+
+            }
+
+            // now rotate the before and after puesdo elements but for this to work we have to move the
+            // puesdo elements to the middle so apply " top : 0; " to both the before and after puesdo
+            // elements
+
+            .sidebar-nav--icon::before {
+
+                top : 0;
+
+                transform : rotate( 135deg );
+
+            }
+
+            .sidebar-nav--icon::after {
+
+                top : 0;
+
+                transform : rotate( -135deg );
+
+            }
 
         }
 

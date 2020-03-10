@@ -154,6 +154,11 @@
         
         @include button;
 
+        // had to do " outline : none; " in order to get rid of the weird outline or coloring
+        // around the button element after clicking the button
+
+        outline : none;
+
     }
 
 }

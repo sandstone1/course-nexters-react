@@ -31,7 +31,8 @@ class SidebarNav extends React.Component {
                 >
 
                     <span
-                        className="sidebar-nav--icon">
+                        className="sidebar-nav--icon"
+                    >
                     </span>
 
                 </button>

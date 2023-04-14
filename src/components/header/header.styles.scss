@@ -34,7 +34,7 @@
     grid-row-gap          : 1.5rem;
     padding               : 4rem 8rem 8rem 8rem;
 
-    // create an overlay by doind the following:
+    // create an overlay by doing the following:
 
     background-image      : linear-gradient( to right, rgba( $color-secondary, 0.93 ), rgba( $color-secondary, 0.93 ) ), url( ../../assets/hero.jpeg ); // rgba( 198, 153, 99, 1 )
     background-position   : center; 
@@ -129,6 +129,12 @@
             // responsive change #4
             // we need set max-height and max-width in order to make the images responsive
 
+            // w3schools said: " How To Create Responsive Images? If you want the image to scale
+            // both up and down on responsiveness, set the CSS width property to 100% and height
+            // to auto ( i.e. { width : 100%; height : auto; } ) " and " If you want an image to
+            // scale down if it has to, but never scale up to be larger than its original size,
+            // use max-width: 100%; ( i.e. { max-width : 100%; height : auto; } ) "
+
             max-width  : 100%;
             max-height : 2.5rem;
 
@@ -149,9 +155,6 @@
         align-self   : start;
         justify-self : start; 
 
-        // we want the button to start as the beginning of the container so let's apply
-        // " just "
-        
         @include button;
 
         // had to do " outline : none; " in order to get rid of the weird outline or coloring

@@ -45,7 +45,7 @@ const Footer = () => (
         </ul>
 
         <p className="copyright">
-            &copy; Copyright 2023
+            &copy; Copyright 2025
         </p>
 
     </div>
